@@ -4,13 +4,14 @@ import { PostFeed } from './components/post-feed/post-feed';
 import { TutoriasFeed } from './components/tutorias-feed/tutorias-feed';
 import { Login } from './components/login/login';
 import { PostForm } from './components/post-form/post-form';
+import { Home } from './components/home/home';
 
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink ,PostFeed, TutoriasFeed, Login, PostForm],
+  imports: [RouterOutlet,Home, RouterLink ,PostFeed, TutoriasFeed, Login, PostForm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
