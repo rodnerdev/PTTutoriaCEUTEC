@@ -1,12 +1,16 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Navbar } from './components/navbar/navbar';
-import { PostFeed } from './post-feed/post-feed';
-import { TutoriasFeed } from './tutorias-feed/tutorias-feed';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { PostFeed } from './components/post-feed/post-feed';
+import { TutoriasFeed } from './components/tutorias-feed/tutorias-feed';
+import { Login } from './components/login/login';
+import { PostForm } from './components/post-form/post-form';
+
+
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, PostFeed, TutoriasFeed],
+  imports: [RouterOutlet, RouterLink ,PostFeed, TutoriasFeed, Login, PostForm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

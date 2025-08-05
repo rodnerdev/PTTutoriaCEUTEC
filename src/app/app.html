@@ -1,5 +1,15 @@
 
-<app-navbar></app-navbar>
-<app-post-feed></app-post-feed>
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">CEUTEC</a>
+    <ul class="navbar-menu">
+      <li class="navbar-item important"><a routerLink="/post-feed" class="navbar-link">Anuncios</a></li>
+      <li class="navbar-item important"><a routerLink="/tutorias-feed" class="navbar-link">Tutorías</a></li>
+    </ul>
+  </div>
+</nav>
+
+
     
-<router-outlet />
+<router-outlet></router-outlet>
