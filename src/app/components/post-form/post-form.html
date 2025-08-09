@@ -1,1 +1,21 @@
-<p>post-form works!</p>
+<form (ngSubmit)="guardarAnuncio()" [formGroup]="anuncioForm">
+  <div>
+    <label>Título del Anuncio *</label>
+    <input formControlName="titulo" type="text">
+    <small *ngIf="anuncioForm.get('titulo')?.invalid && anuncioForm.get('titulo')?.touched">
+      Este campo es obligatorio
+    </small>
+  </div>
+
+  <div>
+    <label>Contenido del Anuncio *</label>
+    <textarea formControlName="cuerpo" rows="4"></textarea>
+    <small *ngIf="anuncioForm.get('cuerpo')?.invalid && anuncioForm.get('cuerpo')?.touched">
+      Este campo es obligatorio
+    </small>
+  </div>
+
+  <button type="submit" [disabled]="anuncioForm.invalid">
+    {{ anuncioForm.get('uuid')?.value ? 'Actualizar' : 'Publicar' }}
+  </button>
+</form>
