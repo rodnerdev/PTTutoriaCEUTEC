@@ -169,3 +169,9 @@
             }
         }
     
+        .imagenHome img {
+    max-width: 170px;  /* Nunca más ancha que 400px */
+    width: 100%;       /* Ocupa el 100% del contenedor */
+    height: auto;
+    
+  }

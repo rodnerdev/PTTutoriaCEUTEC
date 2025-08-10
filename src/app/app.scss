@@ -24,6 +24,7 @@
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
   text-decoration: none;
   color: white;
   cursor: pointer; /* Añadido */
@@ -46,6 +47,7 @@
   display: block; /* Añadido */
   cursor: pointer; /* Añadido */
   position: relative; /* Para el efecto activo */
+  font-size: 1.3rem;//aveeeererrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 }
 
 /* Estilo para links activos */
@@ -106,6 +108,11 @@
 
 
 
+        .imagenHome img {
+    max-width: 100px;  /* Nunca más ancha que 400px */
+    width: 100%;       /* Ocupa el 100% del contenedor */
+    height: auto;
+  }
 
 
 
