@@ -7,13 +7,14 @@ import { PostForm } from './components/post-form/post-form';
 import { Home } from './components/home/home';
 import { PostFormEditar } from './components/post-form-editar/post-form-editar';
 import { EventosFeed } from './components/eventos-feed/eventos-feed';
+import { TutoriaFormComponent } from './components/tutoria-form/tutoria-form';
 
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Home, RouterLink ,PostFeed, TutoriasFeed, Login, PostForm, PostFormEditar, EventosFeed],
+  imports: [RouterOutlet,Home, RouterLink ,PostFeed, TutoriasFeed, Login, PostForm, PostFormEditar, EventosFeed,TutoriaFormComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

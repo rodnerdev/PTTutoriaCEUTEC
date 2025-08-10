@@ -3,200 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorías de Informática - Comunidad Académica</title>
-   
+    <title>Tutorías Universitarias</title>
 </head>
 <body>
-    <h1>Tutorías 🧑🏻‍🏫</h1>
-    <div class="main-content">
-        <div class="header">
-            <div class="search-bar">
-                <span>🔍</span>
-                <input type="text" placeholder="Buscar tutorías, cursos o recursos...">
+    <h1>Tutorías 📚</h1>
+    <div class="platform-container">
+        <!-- Contenido principal -->
+        <div class="post-feed-container">
+            <div class="header">
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Buscar tutorías..." (input)="buscarTutorias($event)">
+                </div>
+                
+                <div class="header-actions">
+                    <span class="header-icon">💬 <span class="badge">3</span></span>
+                    <span class="header-icon">🔔 <span class="badge">7</span></span>
+                    <span class="header-icon">📩</span>
+                </div>
             </div>
             
-            <div class="header-actions">
-                <span class="header-icon">💬 <span class="badge">3</span></span>
-                <span class="header-icon">🔔 <span class="badge">7</span></span>
-                <span class="header-icon">📩</span>
-            </div>
-        </div>
-        
-        <div class="post-feed">
-            <div class="create-post">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" style="width: 40px; height: 40px; border-radius: 50%;">
-                <input type="text" class="post-input" placeholder="Comparte una tutoría, recurso o pregunta...">
-            </div>
-            
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Usuario" class="post-avatar">
-                    <div>
-                        <div class="post-user">Ing. María Rodríguez</div>
-                        <div class="post-meta">Tutora Senior · Departamento de Sistemas · Hace 3 horas</div>
-                    </div>
+            <div class="post-feed">
+                <!-- Botón para crear nueva tutoría -->
+                <div class="create-post">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="post-avatar">
+                    <input type="text" class="post-input" placeholder="Crear nueva tutoría" routerLink="/tutoria-form" readonly>
                 </div>
                 
-                <div class="post-content">
-                    <p>📚 <strong>Tutorías de Programación Avanzada en Python</strong></p>
-                    <p>Horarios disponibles esta semana:</p>
-                    
-                    <div style="background-color: #f5f5f5; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
-                        <p><strong>📍 Lugar:</strong> Laboratorio 5, Edificio de Informática</p>
-                        <p><strong>⏰ Horarios:</strong></p>
-                        <ul>
-                            <li>Lunes: 4-6pm (Estructuras de datos)</li>
-                            <li>Miércoles: 3-5pm (POO y patrones de diseño)</li>
-                            <li>Viernes: 10am-12pm (Algoritmos avanzados)</li>
-                        </ul>
-                        <p><strong>Requisitos:</strong> Traer laptop con Python 3.8+ y VS Code instalado</p>
-                    </div>
-                    
-                    <div>
-                        <span class="tag">#Python</span>
-                        <span class="tag">#Programación</span>
-                        <span class="tag">#Tutorías</span>
-                        <span class="tag">#Algoritmos</span>
-                    </div>
-                </div>
-                
-                
-            </div>
-            
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Usuario" class="post-avatar">
-                    <div>
-                        <div class="post-user">Dr. Carlos Méndez</div>
-                        <div class="post-meta">Profesor de Inteligencia Artificial · Hace 7 horas</div>
-                    </div>
-                </div>
-                
-                <div class="post-content">
-                    <p>🧠 <strong>Sesión Extra: Fundamentos de Machine Learning</strong></p>
-                    <p>Debido a la alta demanda, agregaré una sesión especial este viernes:</p>
-                    
-                    <div style="background-color: #fff8e1; border-left: 4px solid var(--secondary); padding: 0.5rem 1rem; margin: 1rem 0;">
-                        <p><strong>📅 Fecha:</strong> Viernes 15 de Noviembre</p>
-                        <p><strong>⏰ Horario:</strong> 2:00pm - 5:00pm</p>
-                        <p><strong>📍 Lugar:</strong> Aula Magna B</p>
-                        <p><strong>Temas:</strong> Regresión lineal, clasificación con SVM, introducción a redes neuronales</p>
-                    </div>
-                    
-                    <p>Material requerido:</p>
-                    <ol>
-                        <li>Laptop con Anaconda instalado</li>
-                        <li>Conocimientos básicos de Python y álgebra lineal</li>
-                        <li>Descargar el dataset de práctica <a href="#" style="color: var(--primary);">[enlace]</a></li>
-                    </ol>
-                    
-                    <div>
-                        <span class="tag">#MachineLearning</span>
-                        <span class="tag">#IA</span>
-                        <span class="tag">#Python</span>
-                        <span class="tag">#CienciaDeDatos</span>
-                    </div>
-                </div>
-                
-               
-            </div>
-            
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://via.placeholder.com/50" alt="Comunidad" class="post-avatar">
-                    <div>
-                        <div class="post-user">Club de Desarrollo Web</div>
-                        <div class="post-meta">Organización estudiantil · Hace 1 día</div>
-                    </div>
-                </div>
-                
-                <div class="post-content">
-                    <p>🌐 <strong>Taller Práctico: Desarrollo Fullstack con MERN</strong></p>
-                    
-                    <img src="https://via.placeholder.com/600x300?text=MERN+Stack" alt="MERN Stack" class="post-image">
-                    
-                    <p>¿Quieres aprender a crear aplicaciones web completas? Únete a nuestro taller intensivo:</p>
-                    
-                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                        <tr style="background-color: #f5f5f5;">
-                            <th style="padding: 0.5rem; text-align: left;">Día</th>
-                            <th style="padding: 0.5rem; text-align: left;">Tema</th>
-                            <th style="padding: 0.5rem; text-align: left;">Horario</th>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">Sábado</td>
-                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">React Fundamentals</td>
-                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">9am-12pm</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">Sábado</td>
-                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">Node.js y Express</td>
-                            <td style="padding: 0.5rem; border-bottom: 1px solid #eee;">1pm-4pm</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.5rem;">Domingo</td>
-                            <td style="padding: 0.5rem;">Proyecto Integrador</td>
-                            <td style="padding: 0.5rem;">10am-5pm</td>
-                        </tr>
-                    </table>
-                    
-                    <p><strong>Requisitos:</strong> Conocimientos básicos de JavaScript y HTML/CSS</p>
-                    
-                    <button style="background-color: var(--primary); color: white; border: none; border-radius: 5px; padding: 0.8rem 1.5rem; font-weight: bold; margin-top: 1rem; cursor: pointer;">Registrarme al Taller</button>
-                    
-                    <div>
-                        <span class="tag">#WebDevelopment</span>
-                        <span class="tag">#MERN</span>
-                        <span class="tag">#JavaScript</span>
-                        <span class="tag">#FullStack</span>
-                    </div>
-                </div>
-              
-            </div>
-            
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Usuario" class="post-avatar">
-                    <div>
-                        <div class="post-user">Lic. Ana Torres</div>
-                        <div class="post-meta">Tutora de Base de Datos · Hace 2 días</div>
-                    </div>
-                </div>
-                
-                <div class="post-content">
-                    <p>🗃️ <strong>Grupo de Estudio: SQL Avanzado y Optimización</strong></p>
-                    
-                    <p>¿Preparándose para el examen de Bases de Datos II? Únanse a nuestro grupo de estudio semanal:</p>
-                    
-                    <div style="display: flex; gap: 1rem; margin: 1rem 0;">
-                        <div style="flex: 1; background-color: #e8f5e9; padding: 1rem; border-radius: 8px;">
-                            <p style="font-weight: bold; margin-bottom: 0.5rem;">📅 Sesión 1</p>
-                            <p>Consultas complejas</p>
-                            <p>Joins avanzados</p>
-                            <p>Subconsultas</p>
-                        </div>
-                        <div style="flex: 1; background-color: #e3f2fd; padding: 1rem; border-radius: 8px;">
-                            <p style="font-weight: bold; margin-bottom: 0.5rem;">📅 Sesión 2</p>
-                            <p>Índices y optimización</p>
-                            <p>Transacciones</p>
-                            <p>Vistas materializadas</p>
+                <!-- Lista dinámica de tutorías -->
+                @for (tutoria of tutoriasFiltradas; track tutoria.uuid) {
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="post-avatar">
+                        <div>
+                            <div class="post-user">{{ tutoria.nombre }} (@{{ tutoria.usuario }})</div>
+                            <div class="post-meta">{{ formatDate(tutoria.fechaHora) }} | {{ tutoria.carrera }}</div>
                         </div>
                     </div>
                     
-                    <p><strong>Horario regular:</strong> Martes y Jueves 5-7pm, Laboratorio de Bases de Datos</p>
-                    <p><strong>Material recomendado:</strong> <a href="#" style="color: var(--primary);">[Guía de estudio]</a> y <a href="#" style="color: var(--primary);">[Ejercicios prácticos]</a></p>
+                    <div class="post-content">
+                        <h3>{{ tutoria.titulo }}</h3>
+                        <div class="tutoria-detalles">
+                            <p><strong>Lugar:</strong> {{ tutoria.lugar }}</p>
+                            <p><strong>Horarios:</strong> {{ tutoria.horarios }}</p>
+                        </div>
+                        <p>{{ tutoria.cuerpo }}</p>
+                    </div>
                     
-                    <div>
-                        <span class="tag">#SQL</span>
-                        <span class="tag">#BasesDeDatos</span>
-                        <span class="tag">#Optimización</span>
-                        <span class="tag">#GrupoDeEstudio</span>
+                    <!-- Botones de acciones -->
+                    <div class="post-actions">
+                        <button (click)="eliminarTutoria(tutoria.uuid)" class="delete-btn">
+                            🗑️ Eliminar
+                        </button>
+                        <button (click)="editarTutoria(tutoria)" class="edit-btn">
+                            ✏️ Editar
+                        </button>
                     </div>
                 </div>
-                
-               
+                } @empty {
+                <div class="post">
+                    <p>No hay tutorías programadas aún.</p>
+                </div>
+                }
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
+        <div class="social-links">
+            <!-- Puedes agregar íconos sociales aquí si lo deseas -->
+        </div>
+    </footer>
 </body>
 </html>
