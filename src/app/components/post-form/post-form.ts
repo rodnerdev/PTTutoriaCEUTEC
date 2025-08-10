@@ -15,11 +15,12 @@ export class PostForm {
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Anunciostgu } from '../../services/anunciostgu';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-post-form',
   standalone: true,
-  imports: [ReactiveFormsModule], // Importa ReactiveFormsModule
+  imports: [ReactiveFormsModule,RouterLink, RouterOutlet], // Importa ReactiveFormsModule
   templateUrl: './post-form.html',
   styleUrl: './post-form.scss'
 })

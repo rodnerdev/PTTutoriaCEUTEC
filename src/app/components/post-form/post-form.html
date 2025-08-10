@@ -15,7 +15,7 @@
     </small>
   </div>
 
-  <button type="submit" [disabled]="anuncioForm.invalid">
-    {{ anuncioForm.get('uuid')?.value ? 'Actualizar' : 'Publicar' }}
+  <button  type="submit" [disabled]="anuncioForm.invalid" >
+    {{ anuncioForm.get('uuid')?.value ? 'Actualizar' : 'Publicar' }} 
   </button>
 </form>

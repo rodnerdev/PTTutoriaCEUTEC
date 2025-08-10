@@ -5,6 +5,7 @@ import { Login } from './components/login/login';
 import { PostForm } from './components/post-form/post-form';
 import { Home } from './components/home/home';
 import { PostFormEditar } from './components/post-form-editar/post-form-editar';
+import { EventosFeed } from './components/eventos-feed/eventos-feed';
 
 
 
@@ -15,7 +16,9 @@ export const routes: Routes = [
    { path: 'login', component: Login},
    { path: 'post-form', component: PostForm},
     { path: 'home', component: Home},
-     { path: 'post-form-editar', component: PostFormEditar}
+     { path: 'post-form-editar', component: PostFormEditar},
+     { path: 'eventos-feed', component: EventosFeed}
+
 
 ];
 
