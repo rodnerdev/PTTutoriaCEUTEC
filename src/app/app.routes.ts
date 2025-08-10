@@ -10,7 +10,7 @@ import { EventosFeed } from './components/eventos-feed/eventos-feed';
 
 
 export const routes: Routes = [
-   { path: '', component: Home},
+   { path: '', component: Login},
     { path: 'post-feed', component: PostFeed},
   { path: 'tutorias-feed', component: TutoriasFeed},
    { path: 'login', component: Login},
