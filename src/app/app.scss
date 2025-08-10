@@ -63,11 +63,11 @@
 /* Destacar Anuncios y Tutorías */
 .navbar-item.important .navbar-link {
   font-weight: bold;
-  color: #f1c40f;
+  color: white;
 }
 
 .navbar-item.important .navbar-link.router-link-active {
-  color: #e67e22;
+  color: whitesmoke;
 }
 
 /* Indicador visual para ruta activa */
@@ -102,4 +102,60 @@
     padding: 0.5rem 1rem;
     text-align: center;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.cancel-btn {
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #e74c3c; /* Rojo para acción de cerrar/eliminar */
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(231, 76, 60, 0.1);
+}
+
+.cancel-btn:hover {
+  background: #e74c3c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.2);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(231, 76, 60, 0.2);
+}
+
+/* Opcional: añadir icono de logout */
+.cancel-btn::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e74c3c"><path d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 0 1 2 2v2h-2V4H5v16h9v-2h2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn:hover::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 0 1 2 2v2h-2V4H5v16h9v-2h2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9z"/></svg>');
 }
