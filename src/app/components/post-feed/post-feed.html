@@ -31,24 +31,29 @@
                 </div>
                 
                 <!-- Lista dinámica de anuncios -->
-                @for (anuncio of anuncios; track anuncio.uuid) {
-                <div class="post">
-                    <div class="post-header">
-                        <img src="https://via.placeholder.com/50" alt="Usuario" class="post-avatar">
-                        <div>
-                            <div class="post-user">{{ anuncio.nombre }} (@{{ anuncio.usuario }})</div>
-                            <div class="post-meta">{{ formatDate(anuncio.fechaHora) }}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="post-content">
-                        <h3>{{ anuncio.titulo }}</h3>
-                        <p>{{ anuncio.cuerpo }}</p>
-                    </div>
-                    
-                    
-                </div>
-                } @empty {
+             @for (anuncio of anuncios; track anuncio.uuid) {
+<div class="post">
+  <div class="post-header">
+    <img src="https://via.placeholder.com/50" alt="Usuario" class="post-avatar">
+    <div>
+      <div class="post-user">{{ anuncio.nombre }} (@{{ anuncio.usuario }})</div>
+      <div class="post-meta">{{ formatDate(anuncio.fechaHora) }}</div>
+    </div>
+  </div>
+  
+  <div class="post-content">
+    <h3>{{ anuncio.titulo }}</h3>
+    <p>{{ anuncio.cuerpo }}</p>
+  </div>
+  
+  <!-- Botones de acciones -->
+  <div class="post-actions">
+    <button (click)="eliminarAnuncio(anuncio.uuid)" class="delete-btn">
+      🗑️ Eliminar Post
+    </button>
+  </div>
+</div>
+} @empty {
                 <div class="post">
                     <p>No hay anuncios publicados aún.</p>
                 </div>
@@ -56,10 +61,7 @@
             </div>
         </div>
         
-        <!-- Sidebar derecho (se mantiene igual) -->
-        <div class="right-sidebar">
-            <!-- ... contenido del sidebar ... -->
-        </div>
+        
     </div>
 </body>
 </html>
