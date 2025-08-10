@@ -4,6 +4,7 @@ import { TutoriasFeed } from './components/tutorias-feed/tutorias-feed';
 import { Login } from './components/login/login';
 import { PostForm } from './components/post-form/post-form';
 import { Home } from './components/home/home';
+import { PostFormEditar } from './components/post-form-editar/post-form-editar';
 
 
 
@@ -14,6 +15,7 @@ export const routes: Routes = [
    { path: 'login', component: Login},
    { path: 'post-form', component: PostForm},
     { path: 'home', component: Home},
+     { path: 'post-form-editar', component: PostFormEditar}
 
 ];
 

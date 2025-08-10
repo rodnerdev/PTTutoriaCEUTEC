@@ -75,6 +75,7 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  docData,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -109,6 +110,11 @@ export class Anunciostgu {
       cuerpo: anuncio.cuerpo,
     });
   }
+
+  getAnuncioPorId(uuid: string) {
+  const anuncioDoc = doc(this.firestore, 'anunciostgu', uuid);
+  return docData(anuncioDoc); // Importa docData de '@angular/fire/firestore'
+}
 
   // Eliminar anuncio
   deleteAnuncio(uuid: string) {
