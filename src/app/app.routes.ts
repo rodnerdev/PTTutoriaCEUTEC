@@ -7,6 +7,7 @@ import { Home } from './components/home/home';
 import { PostFormEditar } from './components/post-form-editar/post-form-editar';
 import { EventosFeed } from './components/eventos-feed/eventos-feed';
 import { TutoriaFormComponent } from './components/tutoria-form/tutoria-form';
+import { EventoForm } from './components/evento-form/evento-form';
 
 
 
@@ -19,7 +20,9 @@ export const routes: Routes = [
     { path: 'home', component: Home},
      { path: 'post-form-editar', component: PostFormEditar},
      { path: 'eventos-feed', component: EventosFeed},
-     { path: 'tutoria-form', component: TutoriaFormComponent}
+     { path: 'tutoria-form', component: TutoriaFormComponent},
+     { path: 'evento-form', component: EventoForm}
+
 
 
 ];

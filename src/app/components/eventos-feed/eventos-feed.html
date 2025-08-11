@@ -1,1 +1,83 @@
-<p>eventos-feed works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Universitarios</title>
+</head>
+<body>
+    <h1>Eventos 🎉</h1>
+    <div class="platform-container">
+        <div class="post-feed-container">
+            <div class="header">
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Buscar eventos..." (input)="buscarEventos($event)">
+                </div>
+                
+                <div class="header-actions">
+                    <span class="header-icon">💬 <span class="badge">3</span></span>
+                    <span class="header-icon">🔔 <span class="badge">7</span></span>
+                    <span class="header-icon">📩</span>
+                </div>
+            </div>
+            
+            <div class="post-feed">
+                <!-- Botón para crear nuevo evento -->
+                <div class="create-post">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="post-avatar">
+                    <input type="text" class="post-input" placeholder="Crear nuevo evento" (click)="nuevoEvento()" readonly>
+                </div>
+                
+                <!-- Lista dinámica de eventos -->
+                @if (cargando) {
+                <div class="post">
+                    <div class="cargando-eventos">
+                        <div class="spinner"></div>
+                        <p>Cargando eventos...</p>
+                    </div>
+                </div>
+                } @else {
+                  @for (evento of eventosFiltrados; track evento.uuid) {
+                  <div class="post">
+                      <div class="post-header">
+                          
+                      </div>
+                      
+                      <div class="post-content">
+                          <h3>{{ evento.titulo }}</h3>
+                          <p class="breve-descripcion">{{ evento.brevedescripcion }}</p>
+                          
+                          <div class="evento-detalles">
+                              <p><strong>📅 Fecha y Hora:</strong> {{ formatFechaHoraEvento(evento.fecha, evento.hora) }}</p>
+                              <p><strong>📍 Lugar:</strong> {{ evento.lugar }}</p>
+                          </div>
+                          
+                          <div class="descripcion-completa">
+                              <p>{{ evento.descripcion }}</p>
+                          </div>
+                      </div>
+                      
+                      <div class="post-actions">
+                          <button (click)="eliminarEvento(evento.uuid)" class="delete-btn">
+                              🗑️ Eliminar
+                          </button>
+                          <button (click)="editarEvento(evento)" class="edit-btn">
+                              ✏️ Editar
+                          </button>
+                      </div>
+                  </div>
+                  } @empty {
+                  <div class="post">
+                      <p>No hay eventos programados aún.</p>
+                  </div>
+                  }
+                }
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
