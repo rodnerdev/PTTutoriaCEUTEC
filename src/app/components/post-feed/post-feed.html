@@ -13,7 +13,7 @@
             <div class="header">
                 <div class="search-bar">
                     <span>🔍</span>
-                    <input type="text" placeholder="Buscar publicaciones...">
+                    <input type="text" placeholder="Buscar publicaciones..."(input)="buscarAnuncios($event)">
                 </div>
                 
                 <div class="header-actions">
@@ -31,7 +31,7 @@
                 </div>
                 
                 <!-- Lista dinámica de anuncios -->
-             @for (anuncio of anuncios; track anuncio.uuid) {
+             @for (anuncio of anunciosFiltrados; track anuncio.uuid) {
 <div class="post">
   <div class="post-header">
     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="post-avatar">

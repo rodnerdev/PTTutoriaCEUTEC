@@ -61,6 +61,12 @@ export class EventosFeed implements OnInit {
   buscarEventos(event: Event) {
     const termino = (event.target as HTMLInputElement).value.toLowerCase();
     this.terminoBusqueda = termino;
+
+     if (!termino.trim()) {
+    this.eventosFiltrados = [...this.eventos];
+    return;
+  }
+  
     this.eventosFiltrados = this.eventos.filter(evento => 
       evento.titulo.toLowerCase().includes(termino) || 
       evento.brevedescripcion.toLowerCase().includes(termino) ||

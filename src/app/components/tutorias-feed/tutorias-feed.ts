@@ -49,6 +49,13 @@ export class TutoriasFeed implements OnInit {
   buscarTutorias(event: Event) {
     const termino = (event.target as HTMLInputElement).value.toLowerCase();
     this.terminoBusqueda = termino;
+
+
+if (!termino.trim()) {
+    this.tutoriasFiltradas = [...this.tutorias];
+    return;
+  }
+
     this.tutoriasFiltradas = this.tutorias.filter(tutoria => 
       tutoria.titulo.toLowerCase().includes(termino) || 
       tutoria.cuerpo.toLowerCase().includes(termino) ||
