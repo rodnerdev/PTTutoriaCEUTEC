@@ -31,6 +31,7 @@ export class PostFeed {
   cargarAnuncios() {
     this.anunciosService.getAnuncios().subscribe((data) => {
       this.anuncios = data;
+      this.anunciosFiltrados = [...this.anuncios];
     });
   }
 
@@ -69,6 +70,8 @@ export class PostFeed {
 buscarAnuncios(event: Event) {
   const termino = (event.target as HTMLInputElement).value.toLowerCase();
   this.terminoBusqueda = termino;
+
+  
   
   this.anunciosFiltrados = this.anuncios.filter(anuncio => 
     anuncio.titulo.toLowerCase().includes(termino) || 
