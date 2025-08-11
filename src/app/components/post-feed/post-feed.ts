@@ -71,7 +71,10 @@ buscarAnuncios(event: Event) {
   const termino = (event.target as HTMLInputElement).value.toLowerCase();
   this.terminoBusqueda = termino;
 
-  
+  if (!termino.trim()) {
+    this.anunciosFiltrados = [...this.anuncios];
+    return;
+  }
   
   this.anunciosFiltrados = this.anuncios.filter(anuncio => 
     anuncio.titulo.toLowerCase().includes(termino) || 
