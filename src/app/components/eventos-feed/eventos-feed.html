@@ -1,1 +1,90 @@
-<p>eventos-feed works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Universitarios</title>
+</head>
+<body>
+    <h1>Eventos 🎉</h1>
+    <div class="platform-container">
+        <div class="post-feed-container">
+            <div class="header">
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Buscar eventos..." (input)="buscarEventos($event)">
+                </div>
+                
+                <div class="header-actions">
+                    <button class="nuevo-evento-btn" (click)="nuevoEvento()">
+                        ＋ Nuevo Evento
+                    </button>
+                </div>
+            </div>
+            
+            <div class="post-feed">
+                @if (cargando) {
+                <div class="cargando-eventos">
+                    <div class="spinner"></div>
+                    <p>Cargando eventos...</p>
+                </div>
+                } @else {
+                  @for (evento of eventosFiltrados; track evento.uuid) {
+                  <div class="evento-card">
+                      <div class="evento-header">
+                          <div class="evento-fecha">
+                              <div class="evento-fecha-dia">{{ getDiaEvento(evento.fecha) }}</div>
+                              <div class="evento-fecha-mes">{{ getMesEvento(evento.fecha) }}</div>
+                          </div>
+                          
+                          <div class="evento-info">
+                              <h3>{{ evento.titulo }}</h3>
+                              <p class="evento-resumen">{{ evento.brevedescripcion }}</p>
+                          </div>
+                      </div>
+                      
+                      <div class="evento-detalles">
+                          <div class="detalle-item">
+                              <span class="detalle-icono">📅</span>
+                              <span>{{ formatFechaHoraEvento(evento.fecha, evento.hora) }}</span>
+                          </div>
+                          
+                          <div class="detalle-item">
+                              <span class="detalle-icono">📍</span>
+                              <span>{{ evento.lugar }}</span>
+                          </div>
+                          
+                
+                      </div>
+                      
+                      <div class="evento-descripcion">
+                          <p>{{ evento.descripcion }}</p>
+                      </div>
+                      
+                      <div class="evento-footer">
+                          <span class="evento-carrera">{{ evento.carrera }}</span>
+                          
+                          <div class="evento-acciones">
+                              <button (click)="editarEvento(evento)" class="accion-btn editar">
+                                  ✏️ Editar
+                              </button>
+                              <button (click)="eliminarEvento(evento.uuid)" class="accion-btn eliminar">
+                                  🗑️ Eliminar
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  } @empty {
+                  <div class="sin-eventos">
+                      <p>No hay eventos programados aún.</p>
+                      <button (click)="nuevoEvento()" class="nuevo-evento-btn">
+                          ＋ Crear Primer Evento
+                      </button>
+                  </div>
+                  }
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

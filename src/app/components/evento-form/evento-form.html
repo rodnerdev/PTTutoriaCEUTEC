@@ -1,0 +1,72 @@
+<div class="form-container">
+  <h2>{{ eventoForm.get('uuid')?.value ? 'Editar Evento' : 'Nuevo Evento' }}</h2>
+  
+  <form (ngSubmit)="guardarEvento()" [formGroup]="eventoForm">
+    <div class="form-group">
+      <label for="titulo">Título del Evento *</label>
+      <input id="titulo" formControlName="titulo" type="text" 
+             placeholder="Ej: Seminario de Inteligencia Artificial" maxlength="100">
+      @if (eventoForm.get('titulo')?.errors?.['required'] && eventoForm.get('titulo')?.touched) {
+        <small class="error-message">Este campo es obligatorio</small>
+      }
+      @if (eventoForm.get('titulo')?.errors?.['maxlength']) {
+        <small class="error-message">Máximo 100 caracteres</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="brevedescripcion">Breve Descripción *</label>
+      <textarea id="brevedescripcion" formControlName="brevedescripcion" rows="2"
+                placeholder="Descripción corta (aparecerá en la vista previa)" maxlength="200"></textarea>
+      <div class="char-counter">
+        {{ eventoForm.get('brevedescripcion')?.value?.length || 0 }}/200
+      </div>
+      @if (eventoForm.get('brevedescripcion')?.errors?.['required'] && eventoForm.get('brevedescripcion')?.touched) {
+        <small class="error-message">Este campo es obligatorio</small>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fecha">Fecha *</label>
+        <input id="fecha" formControlName="fecha" type="date">
+        @if (eventoForm.get('fecha')?.invalid && eventoForm.get('fecha')?.touched) {
+          <small class="error-message">Este campo es obligatorio</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="hora">Hora *</label>
+        <input id="hora" formControlName="hora" type="time">
+        @if (eventoForm.get('hora')?.invalid && eventoForm.get('hora')?.touched) {
+          <small class="error-message">Este campo es obligatorio</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lugar">Lugar *</label>
+      <input id="lugar" formControlName="lugar" type="text" 
+             placeholder="Ej: Auditorio Principal, Campus Central">
+      @if (eventoForm.get('lugar')?.invalid && eventoForm.get('lugar')?.touched) {
+        <small class="error-message">Este campo es obligatorio</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción Completa *</label>
+      <textarea id="descripcion" formControlName="descripcion" rows="5"
+                placeholder="Describa el evento en detalle..."></textarea>
+      @if (eventoForm.get('descripcion')?.invalid && eventoForm.get('descripcion')?.touched) {
+        <small class="error-message">Este campo es obligatorio</small>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="eventoForm.invalid" class="btn btn-primary">
+        {{ eventoForm.get('uuid')?.value ? 'Actualizar Evento' : 'Publicar Evento' }}
+      </button>
+      
+    </div>
+  </form>
+</div>
