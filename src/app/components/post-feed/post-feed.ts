@@ -21,6 +21,9 @@ export class PostFeed {
  editandoUuid: string | null = null; // Controla qué anuncio se está editando
   formData = { titulo: '', cuerpo: '' }; // Almacena los cambios temporales
 
+
+   anunciosFiltrados: any[] = [];
+  terminoBusqueda: string = '';
    constructor() {
     this.cargarAnuncios();
   }
@@ -63,7 +66,18 @@ export class PostFeed {
     }
   }
 
-
+buscarAnuncios(event: Event) {
+  const termino = (event.target as HTMLInputElement).value.toLowerCase();
+  this.terminoBusqueda = termino;
+  
+  this.anunciosFiltrados = this.anuncios.filter(anuncio => 
+    anuncio.titulo.toLowerCase().includes(termino) || 
+    anuncio.cuerpo.toLowerCase().includes(termino) ||
+    (anuncio.nombre && anuncio.nombre.toLowerCase().includes(termino)) ||
+    (anuncio.usuario && anuncio.usuario.toLowerCase().includes(termino)) ||
+    (anuncio.carrera && anuncio.carrera.toLowerCase().includes(termino))
+  );
+}
   
 
   // Método para formatear la fecha (opcional)
