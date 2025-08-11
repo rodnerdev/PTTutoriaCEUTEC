@@ -127,4 +127,21 @@ export class EventosFeed implements OnInit {
     };
     return fechaHora.toLocaleDateString('es-ES', options);
   }
-}
+
+
+
+ 
+  getDiaEvento(fechaString: string): string {
+    const fecha = new Date(fechaString);
+    return fecha.getDate().toString();
+  }
+
+  getMesEvento(fechaString: string): string {
+    const fecha = new Date(fechaString);
+    return fecha.toLocaleString('es-ES', { month: 'short' });
+  }
+
+  
+  
+} 
+

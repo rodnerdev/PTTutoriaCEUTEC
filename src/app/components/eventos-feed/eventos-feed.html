@@ -16,68 +16,75 @@
                 </div>
                 
                 <div class="header-actions">
-                    <span class="header-icon">💬 <span class="badge">3</span></span>
-                    <span class="header-icon">🔔 <span class="badge">7</span></span>
-                    <span class="header-icon">📩</span>
+                    <button class="nuevo-evento-btn" (click)="nuevoEvento()">
+                        ＋ Nuevo Evento
+                    </button>
                 </div>
             </div>
             
             <div class="post-feed">
-                <!-- Botón para crear nuevo evento -->
-                <div class="create-post">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="post-avatar">
-                    <input type="text" class="post-input" placeholder="Crear nuevo evento" (click)="nuevoEvento()" readonly>
-                </div>
-                
-                <!-- Lista dinámica de eventos -->
                 @if (cargando) {
-                <div class="post">
-                    <div class="cargando-eventos">
-                        <div class="spinner"></div>
-                        <p>Cargando eventos...</p>
-                    </div>
+                <div class="cargando-eventos">
+                    <div class="spinner"></div>
+                    <p>Cargando eventos...</p>
                 </div>
                 } @else {
                   @for (evento of eventosFiltrados; track evento.uuid) {
-                  <div class="post">
-                      <div class="post-header">
-                          
-                      </div>
-                      
-                      <div class="post-content">
-                          <h3>{{ evento.titulo }}</h3>
-                          <p class="breve-descripcion">{{ evento.brevedescripcion }}</p>
-                          
-                          <div class="evento-detalles">
-                              <p><strong>📅 Fecha y Hora:</strong> {{ formatFechaHoraEvento(evento.fecha, evento.hora) }}</p>
-                              <p><strong>📍 Lugar:</strong> {{ evento.lugar }}</p>
+                  <div class="evento-card">
+                      <div class="evento-header">
+                          <div class="evento-fecha">
+                              <div class="evento-fecha-dia">{{ getDiaEvento(evento.fecha) }}</div>
+                              <div class="evento-fecha-mes">{{ getMesEvento(evento.fecha) }}</div>
                           </div>
                           
-                          <div class="descripcion-completa">
-                              <p>{{ evento.descripcion }}</p>
+                          <div class="evento-info">
+                              <h3>{{ evento.titulo }}</h3>
+                              <p class="evento-resumen">{{ evento.brevedescripcion }}</p>
                           </div>
                       </div>
                       
-                      <div class="post-actions">
-                          <button (click)="eliminarEvento(evento.uuid)" class="delete-btn">
-                              🗑️ Eliminar
-                          </button>
-                          <button (click)="editarEvento(evento)" class="edit-btn">
-                              ✏️ Editar
-                          </button>
+                      <div class="evento-detalles">
+                          <div class="detalle-item">
+                              <span class="detalle-icono">📅</span>
+                              <span>{{ formatFechaHoraEvento(evento.fecha, evento.hora) }}</span>
+                          </div>
+                          
+                          <div class="detalle-item">
+                              <span class="detalle-icono">📍</span>
+                              <span>{{ evento.lugar }}</span>
+                          </div>
+                          
+                
+                      </div>
+                      
+                      <div class="evento-descripcion">
+                          <p>{{ evento.descripcion }}</p>
+                      </div>
+                      
+                      <div class="evento-footer">
+                          <span class="evento-carrera">{{ evento.carrera }}</span>
+                          
+                          <div class="evento-acciones">
+                              <button (click)="editarEvento(evento)" class="accion-btn editar">
+                                  ✏️ Editar
+                              </button>
+                              <button (click)="eliminarEvento(evento.uuid)" class="accion-btn eliminar">
+                                  🗑️ Eliminar
+                              </button>
+                          </div>
                       </div>
                   </div>
                   } @empty {
-                  <div class="post">
+                  <div class="sin-eventos">
                       <p>No hay eventos programados aún.</p>
+                      <button (click)="nuevoEvento()" class="nuevo-evento-btn">
+                          ＋ Crear Primer Evento
+                      </button>
                   </div>
                   }
                 }
             </div>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
