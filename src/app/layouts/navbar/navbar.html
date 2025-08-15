@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo" (click)="onNavLinkClick()"></a>
+    
+    <div class="imagenHome">
+      <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC">
+    </div>
+     <div class="imagenHome2">
+      <img src="https://ceutec.hn/wp-content/uploads/2025/01/logo-blanco-ceutec.png" alt="Logo UNITEC">
+    </div>
+    
+    <!-- Botón Hamburguesa -->
+    <button class="mobile-menu-btn" 
+            (click)="toggleMenu()" 
+            [class.change]="isMenuOpen"
+            aria-label="Menú"
+            aria-expanded="isMenuOpen">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
+    <ul class="navbar-menu" [class.active]="isMenuOpen">
+      <li class="navbar-item important">
+        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()">Inicio</a>
+      </li>
+      <li class="navbar-item important">
+        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()">Anuncios</a>
+      </li>
+      <li class="navbar-item important">
+        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()">Tutorías</a>
+      </li>
+      <li class="navbar-item important">
+        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()">Eventos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    
+<router-outlet></router-outlet>
+

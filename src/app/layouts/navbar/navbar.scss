@@ -1,0 +1,144 @@
+/* Estilos base (Mobile First) */
+.navbar {
+  background-color: #0a2240;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.navbar-logo {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  z-index: 1000;
+}
+
+.imagenHome, .imagenHome2 {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  width: 100px;
+  height: 40px;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;    /* Máximo ancho = contenedor */
+    max-height: 100%;   /* Máximo alto = contenedor */
+    object-fit: contain; /* Mantiene proporción sin recortar */
+  }
+}
+
+/* Estilos del botón hamburguesa */
+.mobile-menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  padding: 0;
+  z-index: 1000;
+}
+
+.hamburger-line {
+  background: white;
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Menú para móviles */
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background-color: #0a2240;
+  padding: 20px 0;
+  margin: 0;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.navbar-menu.active {
+  display: flex;
+}
+
+.navbar-item {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: block;
+  padding: 10px 0;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: #f5a623;
+}
+
+/* Breakpoints */
+@media (min-width: 768px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .navbar-item {
+    width: auto;
+    padding: 0 15px;
+  }
+  
+  .imagenHome {
+    display: flex;
+    width: 150px;
+    margin: 0 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .imagenHome {
+    width: 180px;
+    margin: 0 30px;
+  }
+  
+  .navbar-item {
+    padding: 0 20px;
+  }
+}

@@ -8,9 +8,11 @@ import { PostFormEditar } from './components/post-form-editar/post-form-editar';
 import { EventosFeed } from './components/eventos-feed/eventos-feed';
 import { TutoriaFormComponent } from './components/tutoria-form/tutoria-form';
 import { EventoForm } from './components/evento-form/evento-form';
+import { Navbar } from './layouts/navbar/navbar';
 
 
 
+/*
 export const routes: Routes = [
    { path: '', component: Login},
     { path: 'post-feed', component: PostFeed},
@@ -26,4 +28,24 @@ export const routes: Routes = [
 
 
 ];
+*/
 
+
+export const routes: Routes = [
+  { path: '', component: Login },
+  { path: 'login', component: Login },
+  { 
+    path: '', 
+    component: Navbar, // Este incluye el navbar
+    children: [
+      { path: 'post-feed', component: PostFeed },
+      { path: 'tutorias-feed', component: TutoriasFeed },
+      { path: 'post-form', component: PostForm },
+      { path: 'home', component: Home },
+      { path: 'post-form-editar', component: PostFormEditar },
+      { path: 'eventos-feed', component: EventosFeed },
+      { path: 'tutoria-form', component: TutoriaFormComponent },
+      { path: 'evento-form', component: EventoForm }
+    ]
+  }
+];
