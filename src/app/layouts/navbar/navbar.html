@@ -33,6 +33,15 @@
       <li class="navbar-item important">
         <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()">Eventos</a>
       </li>
+      <!-- Reemplaza solo el <li> de "Más" por este código -->
+<li class="navbar-item important dropdown" 
+    (click)="handleDropdownClick($event)"
+    [class.active]="isDropdownOpen">
+  <a class="navbar-link">Más <span class="dropdown-arrow">▼</span></a>
+  <div class="dropdown-content">
+    <a routerLink="/login" class="dropdown-item" (click)="onNavLinkClick()">Cerrar Sesión</a>
+  </div>
+</li>
     </ul>
   </div>
 </nav>
