@@ -1,133 +1,210 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        body {
-            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%); /* Azul a azul oscuro */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+body {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-        .container {
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
-        }
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(41, 128, 185, 0.2); /* Sombra azul */
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(52, 152, 219, 0.2); /* Borde azul claro */
-        }
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(41, 128, 185, 0.2);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    width: 100%;
+    max-width: 400px; /* Tamaño máximo base */
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(41, 128, 185, 0.3); /* Sombra azul más intensa */
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(41, 128, 185, 0.3);
+}
 
-        .card-header {
-            padding: 30px;
-            text-align: center;
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); /* Gradiente azul */
-            color: white;
-        }
+.card-header {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .card-header h1 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
+.card-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
 
-        .card-header p {
-            font-size: 14px;
-            opacity: 0.8;
-        }
+.card-header p {
+    font-size: 14px;
+    opacity: 0.8;
+}
 
-        .card-body {
-            padding: 30px;
-        }
+.card-body {
+    padding: 30px;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+.form-group {
+    margin-bottom: 20px;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #3498db; /* Azul */
-            font-weight: 500;
-        }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #3498db;
+    font-weight: 500;
+}
 
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #3498db; /* Azul */
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border 0.3s ease;
-        }
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #3498db;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s ease;
+}
 
-        .form-group input:focus {
-            outline: none;
-            border-color: #2980b9; /* Azul más oscuro */
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Azul */
-        }
+.form-group input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
 
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); /* Gradiente azul */
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); /* Azul */
-        }
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
 
-        .card-footer {
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #3498db; /* Azul */
-        }
+.card-footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #3498db;
+}
 
-        .card-footer a {
-            color: #2980b9; /* Azul más oscuro */
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.card-footer a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 
-        .card-footer a:hover {
-            color: #1a5276; /* Azul más oscuro */
-        }
+.card-footer a:hover {
+    color: #1a5276;
+}
 
-
-
- .imagenHome img {
-    max-width: 170px;  /* Nunca más ancha que 400px */
-    width: 100%;       /* Ocupa el 100% del contenedor */
+.imagenHome img {
+    max-width: 170px;
+    width: 100%;
     height: auto;
-  }
+}
 
+/* ------------------------- */
+/* Puntos de quiebre responsive */
+/* ------------------------- */
 
+/* Teléfonos grandes (480px - 767px) */
+@media (min-width: 480px) {
+    .card {
+        max-width: 450px;
+    }
+    
+    .card-header {
+        padding: 35px;
+    }
+    
+    .card-header h1 {
+        font-size: 26px;
+    }
+    
+    .imagenHome img {
+        max-width: 180px;
+    }
+}
 
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+    
+    .container {
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .card {
+        max-width: 400px;
+    }
+    
+    /* Opcional: Podrías añadir un layout de 2 columnas aquí si quisieras
+       mostrar otro elemento junto al formulario */
+}
 
-        
+/* Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        max-width: 450px;
+    }
+    
+    .card-header {
+        padding: 40px;
+    }
+    
+    .card-header h1 {
+        font-size: 28px;
+    }
+    
+    .imagenHome img {
+        max-width: 200px;
+    }
+    
+    /* Efectos hover más suaves para desktop */
+    .card:hover {
+        transform: translateY(-8px);
+    }
+    
+    .login-btn:hover {
+        transform: translateY(-3px);
+    }
+}
+//
