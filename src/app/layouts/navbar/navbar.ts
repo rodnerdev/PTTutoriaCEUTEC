@@ -19,6 +19,32 @@ export class Navbar {
 
 isMenuOpen = false;
 
+
+ isDropdownOpen = false;
+
+  // Agrega este método (junto con los que ya tienes)
+  handleDropdownClick(event: Event): void {
+    // Solo manejar clics en móvil
+    if (window.innerWidth < 768) {
+      event.preventDefault();
+      this.isDropdownOpen = !this.isDropdownOpen;
+    }
+  }
+
+  // Modifica tu método onNavLinkClick existente para que quede así:
+  
+
+  // Agrega este HostListener (junto con los que ya tienes)
+  @HostListener('window:resize')
+  onResize(): void {
+    // Cierra el dropdown al cambiar a vista desktop
+    if (window.innerWidth >= 768) {
+      this.isDropdownOpen = false;
+    }
+  }
+
+
+
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
@@ -30,6 +56,7 @@ isMenuOpen = false;
   // Cierra el menú al hacer clic en un enlace (útil para SPA)
   onNavLinkClick(): void {
     this.closeMenu();
+    this.isDropdownOpen = false;
   }
 
   // Opcional: Cierra el menú al hacer clic fuera o al scrollear
