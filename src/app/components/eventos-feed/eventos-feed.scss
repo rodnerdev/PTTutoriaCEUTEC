@@ -319,12 +319,111 @@ h1 {
 /* =============================================
    Media Queries
    ============================================= */
-@media (max-width: 768px) {
+
+   /* =============================================
+   Punto de Quiebre 1: Teléfonos grandes (480px+)
+   ============================================= */
+@media (min-width: 480px) {
+  .evento-detalles {
+    grid-template-columns: 1fr; /* Cambiado de repeat(2, 1fr) a 1fr */
+  }
+  
+  .evento-footer {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .evento-acciones {
+    width: auto;
+    justify-content: flex-end;
+  }
+  
+  .accion-btn {
+    flex: 0 1 auto;
+  }
+  
   .header {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
   }
   
   .search-bar {
+    max-width: 350px;
+  }
+}
+
+/* =============================================
+   Punto de Quiebre 2: Tablets (768px+)
+   ============================================= */
+@media (min-width: 768px) {
+  .post-feed {
+    display: block; /* Cambiado de grid a block */
+  }
+  
+  .evento-card {
+    margin-bottom: 2rem; /* Restaurado el margen inferior */
+  }
+  
+  .evento-header {
+    flex-direction: row;
+  }
+  
+  .evento-fecha {
+    flex-direction: column;
+    min-width: 70px;
+    width: auto;
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .evento-fecha-mes {
+    margin-top: 0.3rem;
+  }
+  
+  .platform-container {
+    padding: 0 2rem;
+  }
+  
+  .search-bar {
+    max-width: 400px;
+  }
+  
+  .header-actions {
+    margin-left: auto;
+  }
+}
+
+/* =============================================
+   Punto de Quiebre 3: Escritorio (1024px+)
+   ============================================= */
+@media (min-width: 1024px) {
+  .post-feed {
+    display: block; /* Mantenido como block */
+  }
+  
+  .evento-card {
+    max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  }
+  
+  .platform-container {
+    padding: 0 3rem;
+  }
+  
+  .search-bar {
+    max-width: 500px;
+  }
+}
+
+/* =============================================
+   Ajustes para móviles muy pequeños (<480px)
+   ============================================= */
+@media (max-width: 479px) {
+  .evento-acciones {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .accion-btn {
     width: 100%;
   }
 }
