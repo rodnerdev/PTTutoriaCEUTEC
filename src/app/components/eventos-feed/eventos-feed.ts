@@ -118,6 +118,8 @@ export class EventosFeed implements OnInit {
     return new Date(isoString).toLocaleString('es-ES', options);
   }
 
+
+  /*
   formatFechaHoraEvento(fecha: string, hora: string) {
     const [year, month, day] = fecha.split('-');
     const [hours, minutes] = hora.split(':');
@@ -145,7 +147,40 @@ export class EventosFeed implements OnInit {
   getMesEvento(fechaString: string): string {
     const fecha = new Date(fechaString);
     return fecha.toLocaleString('es-ES', { month: 'short' });
-  }
+  }*/
+
+
+
+    // Reemplaza tus funciones de fecha con estas versiones ajustadas:
+
+getDiaEvento(fechaString: string): string {
+  // Crear fecha en UTC y ajustar a Honduras (UTC-6)
+  const fecha = new Date(fechaString + 'T00:00:00-06:00');
+  return fecha.getDate().toString();
+}
+
+getMesEvento(fechaString: string): string {
+  // Crear fecha en UTC y ajustar a Honduras (UTC-6)
+  const fecha = new Date(fechaString + 'T00:00:00-06:00');
+  return fecha.toLocaleString('es-ES', { month: 'short', timeZone: 'America/Tegucigalpa' });
+}
+
+formatFechaHoraEvento(fecha: string, hora: string): string {
+  // Combinar fecha y hora con la zona horaria de Honduras
+  const fechaHora = new Date(`${fecha}T${hora}-06:00`);
+  
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'America/Tegucigalpa'
+  };
+  
+  return fechaHora.toLocaleString('es-HN', options);
+}
 
   
   
