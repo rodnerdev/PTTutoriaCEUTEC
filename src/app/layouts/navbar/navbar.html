@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-container">
     <a routerLink="/" class="navbar-logo" (click)="onNavLinkClick()"></a>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <div class="imagenHome">
       <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC">
     </div>
@@ -23,16 +23,19 @@
     
     <ul class="navbar-menu" [class.active]="isMenuOpen">
       <li class="navbar-item important">
-        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()">  <i class="fas fa-home icon-desktop"></i> Inicio</a>
+        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()"><i class="fas fa-home icon-desktop"></i>  Inicio</a>
+
       </li>
       <li class="navbar-item important">
-        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-bullhorn icon-desktop"></i> Anuncios</a>
+        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()"><i class="fas fa-bullhorn icon-desktop"></i> Anuncios</a>
+
       </li>
       <li class="navbar-item important">
         <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-chalkboard-teacher icon-desktop"></i> Tutorías</a>
+
       </li>
       <li class="navbar-item important">
-        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()"><i class="fas fa-calendar-alt icon-desktop"></i> Eventos</a>
+        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-calendar-alt icon-desktop"></i>  Eventos</a>
       </li>
       <!-- Reemplaza solo el <li> de "Más" por este código -->
 <li class="navbar-item important dropdown" 
