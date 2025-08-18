@@ -119,6 +119,7 @@ export class EventosFeed implements OnInit {
   }
 
 
+
   /*
   formatFechaHoraEvento(fecha: string, hora: string) {
     const [year, month, day] = fecha.split('-');
@@ -147,11 +148,8 @@ export class EventosFeed implements OnInit {
   getMesEvento(fechaString: string): string {
     const fecha = new Date(fechaString);
     return fecha.toLocaleString('es-ES', { month: 'short' });
-  }*/
-
-
-
-    // Reemplaza tus funciones de fecha con estas versiones ajustadas:
+  }
+*/
 
 getDiaEvento(fechaString: string): string {
   // Crear fecha en UTC y ajustar a Honduras (UTC-6)
@@ -181,7 +179,6 @@ formatFechaHoraEvento(fecha: string, hora: string): string {
   
   return fechaHora.toLocaleString('es-HN', options);
 }
-
   
   
 } 
