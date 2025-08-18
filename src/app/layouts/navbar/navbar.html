@@ -8,6 +8,7 @@
      <div class="imagenHome2">
       <img src="https://ceutec.hn/wp-content/uploads/2025/01/logo-blanco-ceutec.png" alt="Logo UNITEC">
     </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Botón Hamburguesa -->
     <button class="mobile-menu-btn" 
@@ -22,16 +23,16 @@
     
     <ul class="navbar-menu" [class.active]="isMenuOpen">
       <li class="navbar-item important">
-        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()">Inicio</a>
+        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()">  <i class="fas fa-home icon-desktop"></i> Inicio</a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()">Anuncios</a>
+        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-bullhorn icon-desktop"></i> Anuncios</a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()">Tutorías</a>
+        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-chalkboard-teacher icon-desktop"></i> Tutorías</a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()">Eventos</a>
+        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()"><i class="fas fa-calendar-alt icon-desktop"></i> Eventos</a>
       </li>
       <!-- Reemplaza solo el <li> de "Más" por este código -->
 <li class="navbar-item important dropdown" 

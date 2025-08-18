@@ -230,3 +230,30 @@
     border-top: 1px solid rgba(255,255,255,0.1);
   }
 }
+
+
+/* Ocultar íconos en móvil y tablet */
+.icon-desktop {
+  display: none;
+}
+
+/* Mostrar íconos SOLO en desktop (≥1024px) */
+@media (min-width: 1024px) {
+  .icon-desktop {
+    display: inline-block;
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    color: white; /* Color del ícono */
+    transition: color 0.3s;
+  }
+
+  .navbar-link:hover .icon-desktop {
+    color: #f5a623; /* Color al hacer hover */
+  }
+  
+  /* Ajustar espaciado para los íconos */
+  .navbar-item {
+    padding: 0 12px; /* Reducido de 15px para mejor equilibrio */
+  }
+}
