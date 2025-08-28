@@ -1,0 +1,374 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(41, 128, 185, 0.2);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    width: 100%;
+    max-width: 450px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(41, 128, 185, 0.3);
+}
+
+.card-header {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.card-header p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #3498db;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #3498db;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    transform: translateY(-1px);
+}
+
+.form-group input.invalid {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.05);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.error-message::before {
+    content: '⚠';
+    font-size: 11px;
+}
+
+.error-message.global-error {
+    background: rgba(231, 76, 60, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #e74c3c;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.success-message {
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #27ae60;
+    margin-bottom: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.success-message small {
+    font-size: 11px;
+    opacity: 0.8;
+    display: block;
+    margin-top: 4px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.register-btn:disabled {
+    background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.back-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #7f8c8d;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover:not(:disabled) {
+    background: #ecf0f1;
+    color: #2c3e50;
+    border-color: #95a5a6;
+    transform: translateY(-1px);
+}
+
+.back-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.card-footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #3498db;
+    background: rgba(236, 240, 241, 0.5);
+    border-top: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.card-footer a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card-footer a:hover {
+    color: #1a5276;
+    text-decoration: underline;
+}
+
+.terms {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+.terms a {
+    font-size: 12px;
+}
+
+.imagenHome img {
+    max-width: 170px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Animaciones */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+input.ng-invalid.ng-touched {
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ------------------------- */
+/* Puntos de quiebre responsive */
+/* ------------------------- */
+
+/* Teléfonos grandes (480px - 767px) */
+@media (min-width: 480px) {
+    .card {
+        max-width: 450px;
+    }
+    
+    .card-header {
+        padding: 35px;
+    }
+    
+    .card-header h1 {
+        font-size: 26px;
+    }
+    
+    .imagenHome img {
+        max-width: 180px;
+    }
+    
+    .card-body {
+        padding: 35px;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+    
+    .container {
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .card {
+        max-width: 450px;
+    }
+    
+    .button-group {
+        flex-direction: row;
+    }
+    
+    .back-btn {
+        width: auto;
+        min-width: 120px;
+    }
+}
+
+/* Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        max-width: 480px;
+    }
+    
+    .card-header {
+        padding: 40px;
+    }
+    
+    .card-header h1 {
+        font-size: 28px;
+    }
+    
+    .card-body {
+        padding: 40px;
+    }
+    
+    .imagenHome img {
+        max-width: 200px;
+    }
+    
+    /* Efectos hover más suaves para desktop */
+    .card:hover {
+        transform: translateY(-8px);
+    }
+    
+    .register-btn:hover:not(:disabled) {
+        transform: translateY(-3px);
+    }
+    
+    .back-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+    }
+}
+
+/* Pequeños ajustes para móviles muy pequeños */
+@media (max-width: 379px) {
+    .card-header {
+        padding: 25px 20px;
+    }
+    
+    .card-body {
+        padding: 25px 20px;
+    }
+    
+    .card-footer {
+        padding: 15px;
+    }
+    
+    .button-group {
+        gap: 8px;
+    }
+    
+    .register-btn, .back-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
