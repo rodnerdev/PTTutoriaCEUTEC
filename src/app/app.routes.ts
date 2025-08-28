@@ -9,6 +9,7 @@ import { EventosFeed } from './components/eventos-feed/eventos-feed';
 import { TutoriaFormComponent } from './components/tutoria-form/tutoria-form';
 import { EventoForm } from './components/evento-form/evento-form';
 import { Navbar } from './layouts/navbar/navbar';
+import { Registrar } from './components/registrar/registrar';
 
 
 
@@ -34,6 +35,7 @@ export const routes: Routes = [
 export const routes: Routes = [
   { path: '', component: Login },
   { path: 'login', component: Login },
+   { path: 'registrar', component: Registrar },
   { 
     path: '', 
     component: Navbar, // Este incluye el navbar

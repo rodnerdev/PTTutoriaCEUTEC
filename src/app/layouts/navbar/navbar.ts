@@ -1,5 +1,5 @@
-import { Component, HostListener } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, HostListener, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Home } from '../../components/home/home';
 import { PostFeed } from '../../components/post-feed/post-feed';
 import { TutoriasFeed } from '../../components/tutorias-feed/tutorias-feed';
@@ -8,6 +8,7 @@ import { PostForm } from '../../components/post-form/post-form';
 import { PostFormEditar } from '../../components/post-form-editar/post-form-editar';
 import { EventosFeed } from '../../components/eventos-feed/eventos-feed';
 import { TutoriaFormComponent } from '../../components/tutoria-form/tutoria-form';
+import { AutenticacionService } from '../../services/autenticacion';
 
 @Component({
   selector: 'app-navbar',
@@ -73,6 +74,46 @@ isMenuOpen = false;
     if (this.isMenuOpen) {
       this.closeMenu();
     }
+  }
+
+
+
+
+
+
+
+
+  private authService = inject(AutenticacionService); // ← Usando el nombre correcto
+  private router = inject(Router);
+  
+  loading = false;
+
+  cerrarSesion() {
+    // Mostrar diálogo de confirmación
+    const confirmacion = confirm('¿Estás seguro de que quieres cerrar sesión?');
+    
+    // Si el usuario cancela, no hacer nada
+    if (!confirmacion) {
+      console.log('Cierre de sesión cancelado por el usuario');
+      return;
+    }
+
+    // Si confirma, proceder con el cierre de sesión
+    this.loading = true;
+    
+    this.authService
+      .cerrarSesion()
+      .then(() => {
+        // Redirigir al login después de cerrar sesión
+        this.router.navigate(['/login']);
+        alert('Sesión cerrada exitosamente');
+      })
+      .catch((error) => {
+        alert('Error al cerrar sesión: ' + error.message);
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   }
 
 
