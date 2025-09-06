@@ -23,12 +23,14 @@ import {
   deleteDoc,
   docData,
 } from '@angular/fire/firestore';
+import { AutenticacionService } from './autenticacion';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Eventostgu {
   private firestore = inject(Firestore);
+  authService = inject(AutenticacionService);
 
   // Obtener todos los eventos
   getEventos() {
@@ -36,6 +38,7 @@ export class Eventostgu {
     return collectionData(eventosCollection, { idField: 'uuid' });
   }
 
+  /*
   // Crear evento con campos actualizados
   addEvento(evento: { 
     titulo: string;
@@ -54,7 +57,40 @@ export class Eventostgu {
       fechaHoraCreacion: new Date().toISOString(),
     };
     return addDoc(eventosCollection, eventoCompleto);
+  }*/
+
+async addEvento(evento: { 
+  titulo: string;
+  brevedescripcion: string;
+  descripcion: string;
+  fecha: string;
+  hora: string;
+  lugar: string;
+}) {
+  // Obtener los datos actuales del usuario desde el servicio de autenticación
+  const currentUser = this.authService.getCurrentUser();
+  
+  if (!currentUser) {
+    throw new Error('Usuario no autenticado');
   }
+
+  const eventosCollection = collection(this.firestore, 'eventostgu');
+  
+  const eventoCompleto = {
+    ...evento,
+    // ✅ Datos dinámicos del usuario autenticado
+    Creadornombre: `${currentUser.primerNombre} ${currentUser.segundoNombre} ${currentUser.primerApellido} ${currentUser.segundoApellido}`,
+    Creadorusuario: currentUser.email, // Usar el correo como usuario
+    carrera: currentUser.carrera,
+    universidad: currentUser.universidad,
+    ciudad: currentUser.ciudad,
+    uidCreador: currentUser.uid, // Guardar también el UID del usuario
+    fechaHoraCreacion: new Date().toISOString(),
+  };
+
+  return addDoc(eventosCollection, eventoCompleto);
+}
+
 
   // Actualizar evento
   updateEvento(evento: { 
