@@ -24,6 +24,7 @@
              <img src="https://img.genially.com/603d2e15ce6f992f4ab5848c/eafe3750-08d2-4650-88ea-06579d93ea9b.png" alt="Texto alternativo">
         </div>
                 <h2>Bienvenido Jaguar al Portal Universitario</h2>
+                <h2>{{ authService.currentUserNombreCompleto || 'Cargando' }}</h2>
                 <p>Accede a los últimos anuncios y programa tus tutorías de manera fácil y rápida.</p>
                 <div class="hero-buttons">
                     <a routerLink="/post-feed" class="btn">Ver Anuncios</a>

@@ -25,16 +25,19 @@
             
             <div class="post-feed">
                 <!-- Botón para crear nuevo anuncio -->
+
+
+                 @if (isAdmin) {
                 <div class="create-post">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" alt="Usuario" style="width: 40px; height: 40px; border-radius: 50%;">
                     <input type="text" class="post-input" placeholder="Comparte un anuncio" routerLink="/post-form" readonly>
                 </div>
-                
+              }
                 <!-- Lista dinámica de anuncios -->
              @for (anuncio of anunciosFiltrados; track anuncio.uuid) {
 <div class="post">
   <div class="post-header">
-    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="post-avatar">
+    <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" alt="Usuario" class="post-avatar">
     <div>
       <div class="post-user">{{ anuncio.nombre }} (@{{ anuncio.usuario }})</div>
       <div class="post-meta">{{ formatDate(anuncio.fechaHora) }}</div>
@@ -45,14 +48,16 @@
     <h3>{{ anuncio.titulo }}</h3>
     <p>{{ anuncio.cuerpo }}</p>
   </div>
+
   
+   @if (isAdmin) {
   <!-- Botones de acciones -->
   <div class="post-actions">
     <button (click)="eliminarAnuncio(anuncio.uuid)" class="delete-btn">
       🗑️ Eliminar
     </button>
     <button  (click)="editarAnuncio(anuncio)" >✏️ Editar</button>
-  </div>
+  </div>}
 </div>
 } @empty {
                 <div class="post">
@@ -72,3 +77,4 @@
     </footer>
 </body>
 </html>
+

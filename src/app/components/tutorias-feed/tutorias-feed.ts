@@ -19,6 +19,8 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { Tutoriastgu } from '../../services/tutoriastgu';
+import { AutenticacionService } from '../../services/autenticacion';
+import { Subject, takeUntil } from 'rxjs';
 
 
 @Component({
@@ -34,10 +36,52 @@ export class TutoriasFeed implements OnInit {
   tutorias: any[] = [];
   tutoriasFiltradas: any[] = [];
   terminoBusqueda: string = '';
+  authService = inject(AutenticacionService);
 
-  ngOnInit() {
+  constructor() {
     this.cargarTutorias();
   }
+
+
+// ✅ Variables para control de acceso
+userRol: string | null = null;
+isAdmin: boolean = false;
+isReadOnly: boolean = true;
+
+private destroy$ = new Subject<void>();
+  
+
+
+async ngOnInit() {
+    // Primero suscribirse al usuario actual de auth
+    this.authService.currentUser$
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(async (user: any) => {
+            if (user) {
+                // Obtener los datos COMPLETOS del usuario desde Firestore
+                const userData = await this.authService.getUsuarioConRol(user.uid);
+                
+                if (userData) {
+                    this.userRol = userData.rol || null;
+                    this.isAdmin = this.userRol === 'Administrador';
+                    this.isReadOnly = !this.isAdmin;
+                    
+                    console.log('Datos completos usuario:', userData);
+                    console.log('Rol:', this.userRol);
+                    console.log('Es admin:', this.isAdmin);
+                }
+            } else {
+                this.userRol = null;
+                this.isAdmin = false;
+                this.isReadOnly = true;
+            }
+        });
+}
+
+
+
+
+  
 
   cargarTutorias() {
     this.tutoriasService.getTutorias().subscribe((data) => {

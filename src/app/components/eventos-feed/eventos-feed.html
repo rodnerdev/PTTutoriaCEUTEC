@@ -14,12 +14,13 @@
                     <span>🔍</span>
                     <input type="text" placeholder="Buscar eventos..." (input)="buscarEventos($event)">
                 </div>
-                
+                @if (isAdmin) {
+
                 <div class="header-actions">
                     <button class="nuevo-evento-btn" (click)="nuevoEvento()">
                         ＋ Nuevo Evento
                     </button>
-                </div>
+                </div>}
             </div>
             
             <div class="post-feed">
@@ -63,7 +64,8 @@
                       
                       <div class="evento-footer">
                           <span class="evento-carrera">{{ evento.carrera }}</span>
-                          
+                          @if (isAdmin) {
+
                           <div class="evento-acciones">
                               <button (click)="editarEvento(evento)" class="accion-btn editar">
                                   ✏️ Editar
@@ -71,7 +73,7 @@
                               <button (click)="eliminarEvento(evento.uuid)" class="accion-btn eliminar">
                                   🗑️ Eliminar
                               </button>
-                          </div>
+                          </div>}
                       </div>
                   </div>
                   } @empty {
