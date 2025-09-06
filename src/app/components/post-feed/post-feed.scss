@@ -390,9 +390,21 @@ footer p {
         height: 45px;
     }
     
-    .post-user {
-        font-size: 1rem;
-    }
+    .post-header > div {
+    flex: 1;               /* que ocupe solo el espacio disponible */
+    min-width: 0;          /* clave: evita que el texto se salga */
+}
+
+.post-user {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+    color: var(--dark);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;   /* permite saltos de línea */
+}
+
     
     .post-content h3 {
         font-size: 1.2rem;
