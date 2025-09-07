@@ -3,6 +3,7 @@
   <div class="admin-header">
     <h1>👥 Administración de Usuarios</h1>
     <p>Gestión de usuarios del sistema</p>
+    <h2>Bienvenido Administrador, {{ authService.currentUserNombreCompleto || 'Cargando' }}</h2>
   </div>
 
   <!-- Loading -->
@@ -27,6 +28,7 @@
             <th>Carrera</th>
             <th>Rol</th>
             <th>Fecha Registro</th>
+            <th>Modificado Por</th> <!-- ✅ Nueva columna -->
             <th>Acciones</th>
           </tr>
         </thead>
@@ -55,6 +57,18 @@
               </span>
             </td>
             <td>{{ formatearFecha(user.createdAt) }}</td>
+                <td>
+      @if (user.modificadoPor) {
+      <div class="modificado-info">
+        <div class="modificado-nombre">{{ user.modificadoPor.nombre }}</div>
+        <div class="modificado-fecha">{{ formatearFecha(user.modificadoPor.fecha) }}</div>
+        <div class="modificado-uuid">UUID: {{ user.modificadoPor.uuid }}</div>
+      </div>
+      } @else {
+      <span class="no-modificado">Nunca modificado</span>
+      }
+    </td>
+
             <td>
               <button 
                 class="edit-btn"
@@ -78,6 +92,13 @@
     <p>No hay usuarios registrados</p>
   </div>
   }
+<br>
+<br>
+  <button routerLink="/registrar" 
+       class="btn btn-secondary"
+        style="padding: 10px 20px">
+  Añadir Usuario
+</button>
 
   <!-- Modal de edición -->
 @if (editingUser) {
