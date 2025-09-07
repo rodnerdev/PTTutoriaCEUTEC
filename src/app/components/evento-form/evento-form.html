@@ -66,6 +66,11 @@
       <button type="submit" [disabled]="eventoForm.invalid" class="btn btn-primary">
         {{ eventoForm.get('uuid')?.value ? 'Actualizar Evento' : 'Publicar Evento' }}
       </button>
+      <button routerLink="/eventos-feed" 
+       class="btn btn-secondary"
+        style="padding: 10px 20px">
+  Cancelar
+</button>
       
     </div>
   </form>
