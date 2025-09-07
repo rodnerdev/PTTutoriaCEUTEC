@@ -42,6 +42,12 @@
       <button type="submit" [disabled]="tutoriaForm.invalid" class="btn btn-primary">
         {{ tutoriaForm.get('uuid')?.value ? 'Actualizar Tutoría' : 'Publicar Tutoría' }}
       </button>
+      <br> <br>
+     <button routerLink="/tutorias-feed" 
+       class="btn btn-secondary"
+        style="padding: 10px 20px">
+  Cancelar
+</button>
       
     
     </div>
