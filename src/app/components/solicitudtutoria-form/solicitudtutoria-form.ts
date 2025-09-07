@@ -58,7 +58,7 @@ private solicitudesService = inject(Solicitudestutoriastgu);
       Swal.fire({
         icon: 'success',
         title: '¡Solicitud enviada!',
-        text: 'Tu solicitud de tutoría ha sido enviada correctamente.',
+        text: 'Tu solicitud de tutoría ha sido enviada correctamente. Le daremos respuesta por medio del Correo Institucional.',
         confirmButtonText: 'Aceptar'
       }).then(() => {
         this.router.navigate(['/tutorias']); // Redirigir a donde quieras
