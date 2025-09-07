@@ -32,6 +32,31 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ESTILO CORREGIDO */
+.btn.btn-secondary {
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn.btn-secondary:hover {
+    background-color: #4b7be5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn.btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Header */
 .admin-header {
   text-align: center;
@@ -381,7 +406,6 @@ select.ng-invalid.ng-touched {
   border-color: var(--danger);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
-
 /* Acciones del modal */
 .modal-actions {
   display: flex;
@@ -390,41 +414,40 @@ select.ng-invalid.ng-touched {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 2px solid var(--border);
-  
-  button {
-    padding: 0.875rem 1.75rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    min-width: 120px;
-    color: white;
-  }
-  
-  .cancel-btn {
-    background: var(--text-secondary);
-    
-    &:hover {
-      background: #475569;
-    }
-  }
-  
-  .save-btn {
-    background: var(--success);
-    
-    &:hover:not(:disabled) {
-      background: #059669;
-    }
-    
-    &:disabled {
-      background: #9ca3af;
-      cursor: not-allowed;
-    }
-  }
 }
 
+.modal-actions button {
+  padding: 0.875rem 1.75rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+  color: #000000; /* Negro puro */
+}
+
+.modal-actions .cancel-btn {
+  background: #f8b4b4; /* Rojo claro */
+}
+
+.modal-actions .cancel-btn:hover {
+  background: #f5a3a3; /* Rojo claro un poco más oscuro al pasar el mouse */
+}
+
+.modal-actions .save-btn {
+  background: #a7f3d0; /* Verde claro */
+}
+
+.modal-actions .save-btn:hover:not(:disabled) {
+  background: #86efac; /* Verde claro un poco más oscuro al pasar el mouse */
+}
+
+.modal-actions .save-btn:disabled {
+  background: #9ca3af; /* Gris para estado deshabilitado */
+  cursor: not-allowed;
+}
 /* No data */
 .no-data {
   text-align: center;
@@ -750,5 +773,37 @@ select.ng-invalid.ng-touched {
   }
   
   tr:hover td:nth-child(6) {
+    background: #dfdfdf !important;
+  }
+
+
+
+
+
+
+
+
+
+
+  
+  /* COLUMNA ROL COMPLETA EN AZUL */
+  th:nth-child(9),
+  td:nth-child(9) {
+    background: cornflowerblue !important;
+    color: black !important;
+  }
+  
+  /* Badges dentro de la columna rol */
+  td:nth-child(9) .badge {
+    background: cornflowerblue !important;
+    color: black !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  tr:hover td:nth-child(9) {
     background: #dfdfdf !important;
   }
