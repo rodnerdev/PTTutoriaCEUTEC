@@ -11,6 +11,7 @@ import { EventoForm } from './components/evento-form/evento-form';
 import { Navbar } from './layouts/navbar/navbar';
 import { Registrar } from './components/registrar/registrar';
 import { SolicitudtutoriaForm } from './components/solicitudtutoria-form/solicitudtutoria-form';
+import { Profile } from './components/profile/profile';
 
 
 
@@ -48,6 +49,7 @@ export const routes: Routes = [
       { path: 'post-form-editar', component: PostFormEditar },
       { path: 'eventos-feed', component: EventosFeed },
       { path: 'tutoria-form', component: TutoriaFormComponent },
+      { path: 'profile', component: Profile },
             { path: 'solicitudtutoria-form', component: SolicitudtutoriaForm },
 
       { path: 'evento-form', component: EventoForm }

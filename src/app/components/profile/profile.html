@@ -1,0 +1,118 @@
+<div class="perfil-container">
+  <!-- Header -->
+  <div class="perfil-header">
+    <div class="header-content">
+      <h1>👤 Mi Perfil</h1>
+      <p>Información de tu cuenta universitaria</p>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+  <div class="loading-state">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p>Cargando información del perfil...</p>
+    </div>
+  </div>
+  }
+
+  <!-- Datos del usuario -->
+  @if (userData && !loading) {
+  <div class="perfil-content">
+    
+    <!-- Tarjeta principal -->
+    <div class="profile-card">
+      
+      <!-- Sección de avatar -->
+      <div class="avatar-section">
+        <div class="avatar-circle">
+            <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" alt="Usuario" style="width: 40px; height: 40px; border-radius: 50%;">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOigEjEuecL2qeClB_r1HeOtpyUVMx3CA-Uw&s" alt="Usuario" style="width: 40px; height: 40px; border-radius: 50%;">
+          
+            <span class="avatar-initial">{{ getNombreCompleto().charAt(0) || 'U' }}</span>
+        </div>
+        <div class="user-info-main">
+          <h2 class="user-name">{{ getNombreCompleto() }}</h2>
+          <p class="user-email">{{ userData.email }}</p>
+          @if (tieneValor('rol')) {
+          <div class="role-badge badge-{{ userData.rol?.toLowerCase() }}">
+            {{ userData.rol }}
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Grid de información -->
+      <div class="info-grid">
+        
+        <!-- Columna 1 - Información académica -->
+        <div class="info-column">
+          <div class="column-header">
+            <span class="column-icon">🎓</span>
+            <h3>Información Académica</h3>
+          </div>
+          
+          @if (tieneValor('universidad')) {
+          <div class="info-item">
+            <div class="item-icon">🏫</div>
+            <div class="item-content">
+              <span class="item-label">Universidad</span>
+              <span class="item-value">{{ userData.universidad }}</span>
+            </div>
+          </div>
+          }
+
+          @if (tieneValor('carrera')) {
+          <div class="info-item">
+            <div class="item-icon">📚</div>
+            <div class="item-content">
+              <span class="item-label">Carrera</span>
+              <span class="item-value">{{ userData.carrera }}</span>
+            </div>
+          </div>
+          }
+        </div>
+
+        <!-- Columna 2 - Información personal -->
+        <div class="info-column">
+          <div class="column-header">
+            <span class="column-icon">👤</span>
+            <h3>Información Personal</h3>
+          </div>
+          
+          @if (tieneValor('ciudad')) {
+          <div class="info-item">
+            <div class="item-icon">📍</div>
+            <div class="item-content">
+              <span class="item-label">Ciudad</span>
+              <span class="item-value">{{ userData.ciudad }}</span>
+            </div>
+          </div>
+          }
+
+          <div class="info-item">
+            <div class="item-icon">📧</div>
+            <div class="item-content">
+              <span class="item-label">Email</span>
+              <span class="item-value">{{ userData.email }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Sin datos -->
+  @if (!userData && !loading) {
+  <div class="no-data-state">
+    <div class="no-data-content">
+      <span class="no-data-icon">😕</span>
+      <h3>No se encontraron datos</h3>
+      <p>No hay información de perfil disponible</p>
+    </div>
+  </div>
+  }
+</div>
