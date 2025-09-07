@@ -12,6 +12,7 @@ import { Navbar } from './layouts/navbar/navbar';
 import { Registrar } from './components/registrar/registrar';
 import { SolicitudtutoriaForm } from './components/solicitudtutoria-form/solicitudtutoria-form';
 import { Profile } from './components/profile/profile';
+import { UserAdmin } from './components/user-admin/user-admin';
 
 
 
@@ -50,6 +51,7 @@ export const routes: Routes = [
       { path: 'eventos-feed', component: EventosFeed },
       { path: 'tutoria-form', component: TutoriaFormComponent },
       { path: 'profile', component: Profile },
+      { path: 'user-admin', component: UserAdmin },
             { path: 'solicitudtutoria-form', component: SolicitudtutoriaForm },
 
       { path: 'evento-form', component: EventoForm }

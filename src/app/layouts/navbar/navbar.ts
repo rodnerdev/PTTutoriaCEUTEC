@@ -9,6 +9,7 @@ import { PostFormEditar } from '../../components/post-form-editar/post-form-edit
 import { EventosFeed } from '../../components/eventos-feed/eventos-feed';
 import { TutoriaFormComponent } from '../../components/tutoria-form/tutoria-form';
 import { AutenticacionService } from '../../services/autenticacion';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -77,6 +78,42 @@ isMenuOpen = false;
   }
 
 
+
+  
+  // ✅ Variables para control de acceso
+  userRol: string | null = null;
+  isAdmin: boolean = false;
+  isReadOnly: boolean = true;
+  
+  private destroy$ = new Subject<void>();
+    
+  
+  
+  async ngOnInit() {
+      // Primero suscribirse al usuario actual de auth
+      this.authService.currentUser$
+          .pipe(takeUntil(this.destroy$))
+          .subscribe(async (user: any) => {
+              if (user) {
+                  // Obtener los datos COMPLETOS del usuario desde Firestore
+                  const userData = await this.authService.getUsuarioConRol(user.uid);
+                  
+                  if (userData) {
+                      this.userRol = userData.rol || null;
+                      this.isAdmin = this.userRol === 'Administrador';
+                      this.isReadOnly = !this.isAdmin;
+                      
+                      console.log('Datos completos usuario:', userData);
+                      console.log('Rol:', this.userRol);
+                      console.log('Es admin:', this.isAdmin);
+                  }
+              } else {
+                  this.userRol = null;
+                  this.isAdmin = false;
+                  this.isReadOnly = true;
+              }
+          });
+  }
 
 
 
