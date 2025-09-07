@@ -1,0 +1,374 @@
+/* Colores básicos */
+:root {
+  --azul-boton: #2563eb;    /* Azul para botones */
+  --borde-negro: #000000;   /* Bordes negros */
+  --fondo-blanco: #ffffff;  /* Fondo blanco */
+  --texto-oscuro: #000000;;  /* Texto oscuro */
+  --texto-gris: #000000;;    /* Texto gris */
+}
+
+/* Estilos básicos */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 0;
+  border: 1px solid var(--borde-negro);
+}
+
+.card-header {
+  background: var(--azul-boton);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--borde-negro);
+  
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #000000;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Formulario simple - BORDES NEGROS */
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: black;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--borde-negro); /* BORDE NEGRO */
+    border-radius: 4px;
+    font-size: 1rem;
+    background: white;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--azul-boton);
+    }
+    
+    &.invalid {
+      border-color: #ff0000;
+    }
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+/* Mensajes de error simples */
+.error-message {
+  margin-top: 0.5rem;
+  
+  small {
+    color: #ff0000;
+    font-size: 0.9rem;
+  }
+}
+
+.hint {
+  color: var(--texto-gris);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* Información del usuario */
+.user-info {
+  background: #f9f9f9;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--borde-negro);
+  border-radius: 4px;
+  
+  h4 {
+    margin: 0 0 1rem 0;
+    color: var(--azul-boton);
+  }
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.info-item {
+  .label {
+    font-weight: 600;
+    color: var(--texto-oscuro);
+    font-size: 0.9rem;
+  }
+  
+  .value {
+    color: var(--texto-gris);
+    font-size: 0.9rem;
+  }
+}
+
+/* BOTONES AZULES - SIN CAMBIOS DE COLOR */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  
+  button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.submit-btn {
+  background: var(--azul-boton); /* AZUL FIJO */
+  color: blue;
+}
+
+.cancel-btn {
+  background: var(--azul-boton); /* MISMO AZUL */
+  color: blue;
+}
+
+.required-hint {
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borde-negro);
+  
+  small {
+    color: var(--texto-gris);
+    font-size: 0.8rem;
+  }
+}
+
+/* ========== MEDIA QUERIES ESPECÍFICOS ========== */
+
+/* 📱 Teléfonos grandes (≥480px) */
+@media (min-width: 480px) {
+  .container {
+    padding: 25px;
+  }
+  
+  .card-header {
+    padding: 1.75rem;
+    
+    h2 {
+      font-size: 1.6rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .card-body {
+    padding: 2.25rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .button-group {
+    gap: 1.2rem;
+  }
+  
+  .form-group {
+    input, textarea {
+      padding: 0.85rem;
+    }
+  }
+}
+
+/* 📟 Tablets (≥768px) */
+@media (min-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+  
+  .card {
+    max-width: 700px;
+    border-radius: 10px;
+  }
+  
+  .card-header {
+    padding: 2rem;
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .card-body {
+    padding: 2.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.75rem;
+    
+    input, textarea {
+      padding: 1rem;
+      font-size: 1.05rem;
+    }
+  }
+  
+  .user-info {
+    padding: 1.25rem;
+  }
+  
+  .button-group {
+    margin-top: 2.25rem;
+    
+    button {
+      padding: 1.1rem;
+      font-size: 1.05rem;
+    }
+  }
+}
+
+/* 💻 Escritorio (≥1024px) */
+@media (min-width: 1024px) {
+  .container {
+    padding: 40px;
+    max-width: 1200px;
+  }
+  
+  .card {
+    max-width: 800px;
+    border-radius: 12px;
+  }
+  
+  .card-header {
+    padding: 2.5rem;
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1.3rem;
+    }
+  }
+  
+  .card-body {
+    padding: 3rem;
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+    
+    label {
+      font-size: 1.1rem;
+    }
+    
+    input, textarea {
+      padding: 1.1rem;
+      font-size: 1.1rem;
+      border-radius: 6px;
+    }
+  }
+  
+  .user-info {
+    padding: 1.5rem;
+    border-radius: 6px;
+    
+    h4 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .info-item {
+    .label {
+      font-size: 1rem;
+    }
+    
+    .value {
+      font-size: 1rem;
+    }
+  }
+  
+  .button-group {
+    margin-top: 2.5rem;
+    gap: 1.5rem;
+    
+    button {
+      padding: 1.25rem;
+      font-size: 1.1rem;
+      border-radius: 6px;
+    }
+  }
+  
+  .required-hint {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+  }
+}
+
+/* 📱 Móviles pequeños (<480px) */
+@media (max-width: 479px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .card-header {
+    padding: 1.25rem;
+    
+    h2 {
+      font-size: 1.4rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+    }
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .form-group {
+    input, textarea {
+      padding: 0.65rem;
+    }
+  }
+}

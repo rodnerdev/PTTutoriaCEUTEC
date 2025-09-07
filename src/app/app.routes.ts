@@ -10,6 +10,7 @@ import { TutoriaFormComponent } from './components/tutoria-form/tutoria-form';
 import { EventoForm } from './components/evento-form/evento-form';
 import { Navbar } from './layouts/navbar/navbar';
 import { Registrar } from './components/registrar/registrar';
+import { SolicitudtutoriaForm } from './components/solicitudtutoria-form/solicitudtutoria-form';
 
 
 
@@ -47,6 +48,8 @@ export const routes: Routes = [
       { path: 'post-form-editar', component: PostFormEditar },
       { path: 'eventos-feed', component: EventosFeed },
       { path: 'tutoria-form', component: TutoriaFormComponent },
+            { path: 'solicitudtutoria-form', component: SolicitudtutoriaForm },
+
       { path: 'evento-form', component: EventoForm }
     ]
   }
