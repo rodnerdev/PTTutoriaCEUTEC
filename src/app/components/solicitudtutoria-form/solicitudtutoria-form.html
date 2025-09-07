@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>📚 Solicitud de Tutoría</h2>
+            <p>Completa el formulario para solicitar una tutoría</p>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()" novalidate>
+                
+                <!-- Campo: Clase/Materia -->
+                <div class="form-group">
+                    <label for="clase">Clase/Materia *</label>
+                    <input 
+                        type="text" 
+                        id="clase" 
+                        formControlName="clase"
+                        placeholder="Ej: Matemáticas Avanzadas, Programación I, Física"
+                        [class.invalid]="f['clase'].invalid && f['clase'].touched"
+                    >
+                    @if (f['clase'].invalid && f['clase'].touched) {
+                    <div class="error-message">
+                        @if (f['clase'].errors?.['required']) {
+                        <small>La clase es requerida</small>
+                        }
+                        @if (f['clase'].errors?.['minlength']) {
+                        <small>Mínimo 3 caracteres</small>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Campo: Temas -->
+                <div class="form-group">
+                    <label for="temas">Temas específicos *</label>
+                    <textarea 
+                        id="temas" 
+                        formControlName="temas"
+                        placeholder="Describe los temas específicos que necesitas repasar o entender mejor..."
+                        rows="4"
+                        [class.invalid]="f['temas'].invalid && f['temas'].touched"
+                    ></textarea>
+                    @if (f['temas'].invalid && f['temas'].touched) {
+                    <div class="error-message">
+                        @if (f['temas'].errors?.['required']) {
+                        <small>Los temas son requeridos</small>
+                        }
+                        @if (f['temas'].errors?.['minlength']) {
+                        <small>Por favor, describe al menos 10 caracteres</small>
+                        }
+                    </div>
+                    }
+                    <small class="hint">Ej: Derivadas parciales, loops en Python, ecuaciones diferenciales, etc.</small>
+                </div>
+
+                <!-- Campo: Demás Alumnos (Opcional) -->
+                <div class="form-group">
+                    <label for="demasAlumnos">Compañeros de estudio (Opcional)</label>
+                    <input 
+                        type="text" 
+                        id="demasAlumnos" 
+                        formControlName="demasAlumnos"
+                        placeholder="Nombres de otros alumnos que también necesitan la tutoría"
+                    >
+                    <small class="hint">Separa los nombres con comas. Ej: María García, Juan Pérez, Carlos López</small>
+                </div>
+
+                <!-- Información del solicitante (solo lectura) -->
+                <div class="user-info">
+                    <h4>Información del solicitante</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Nombre:</span>
+                            <span class="value">Se completará automáticamente</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Universidad:</span>
+                            <span class="value">Se completará automáticamente</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Carrera:</span>
+                            <span class="value">Se completará automáticamente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="button-group">
+                    <button 
+                        type="submit" 
+                        class="submit-btn" 
+                        [disabled]="loading || solicitudForm.invalid"
+                    >
+                        @if (!loading) {
+                        <span>📨 Enviar Solicitud</span>
+                        }
+                        @if (loading) {
+                        <span>⏳ Enviando...</span>
+                        }
+                    </button>
+                    
+                    <button 
+    type="button" 
+    class="cancel-btn" 
+    [routerLink]="'/home'" 
+    [disabled]="loading"
+>
+    ↩️ Cancelar
+</button>
+
+                </div>
+
+                <!-- Mensaje de campos requeridos -->
+                <div class="required-hint">
+                    <small>* Campos obligatorios</small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
