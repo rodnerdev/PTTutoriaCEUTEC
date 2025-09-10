@@ -236,6 +236,8 @@ export class UserAdmin implements OnInit, OnDestroy {
     this.editedUser = {};
   }
 
+
+/*
   async guardarCambios() {
     if (!this.editingUser) return;
 
@@ -280,6 +282,62 @@ export class UserAdmin implements OnInit, OnDestroy {
       Swal.fire('Error', 'No se pudo actualizar el usuario', 'error');
     }
   }
+  */
+
+
+async guardarCambios() {
+  if (!this.editingUser) return;
+
+  // Agregar confirmación sencilla
+  const confirmacion = confirm('¿Está seguro que desea modificar este usuario?');
+  
+  // Si el usuario cancela, no hacer nada
+  if (!confirmacion) {
+    return;
+  }
+
+  try {
+    // ✅ Obtener información del usuario actual que está editando
+    const currentUser = this.authService.getCurrentUser();
+    
+    if (!currentUser) {
+      throw new Error('Usuario no autenticado');
+    }
+
+    const userDocRef = doc(this.firestore, `users/${this.editingUser.uid}`);
+    
+    // ✅ Datos a actualizar incluyendo el campo modificadoPor
+    const updateData = {
+      primerNombre: this.editedUser.primerNombre,
+      segundoNombre: this.editedUser.segundoNombre || '',
+      primerApellido: this.editedUser.primerApellido,
+      segundoApellido: this.editedUser.segundoApellido || '',
+      universidad: this.editedUser.universidad,
+      ciudad: this.editedUser.ciudad,
+      carrera: this.editedUser.carrera,
+      rol: this.editedUser.rol,
+      modificadoPor: { // ✅ Nuevo campo de auditoría
+        uuid: currentUser.uid,
+        nombre: this.getNombreCompleto(currentUser),
+        fecha: new Date(),
+        email: currentUser.email
+      }
+    };
+
+    await updateDoc(userDocRef, updateData);
+
+    Swal.fire('¡Actualizado!', 'Usuario actualizado correctamente', 'success');
+    this.cancelarEdicion();
+    
+    // ✅ Recargar los datos para ver los cambios
+    this.cargarUsuarios();
+    
+  } catch (error) {
+    console.error('Error actualizando usuario:', error);
+    Swal.fire('Error', 'No se pudo actualizar el usuario', 'error');
+  }
+}
+
 
   formatearFecha(fecha: any): string {
     if (!fecha) return 'N/A';
