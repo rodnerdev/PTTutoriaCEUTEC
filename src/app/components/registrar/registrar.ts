@@ -176,7 +176,7 @@ export class Registrar {
   universidades = ['UNITEC', 'CEUTEC'];
   ciudades = ['Tegucigalpa', 'San Pedro Sula', 'La Ceiba'];
   carreras = ['Ingeniería en Sistemas', 'Medicina', 'Derecho', 'Administración de Empresas', 'Arquitectura', 'Psicología', 'Contaduría Pública'];
-  roles = ['Estudiante', 'Profesor', 'Administrador'];
+  roles = ['Estudiante', 'Solicitar rol Profesor', 'Solicitar rol Administrador'];
 
   ciudadesFiltradas: string[] = [];
 
