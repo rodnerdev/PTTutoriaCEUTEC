@@ -6,63 +6,81 @@
     <title>Portal Universitario - Inicio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-   
 </head>
 <body>
-    <header>
+    <header role="banner">
         <div class="logo">
-            <h1><i class="fas fa-university"></i> Portal Universitario</h1>
+            <h1 tabindex="0"><i class="fas fa-university" aria-hidden="true"></i> Portal Universitario</h1>
         </div>
     </header>
 
-    <main>
-        
-        <section class="hero">
+    <main role="main">
+        <section class="hero" aria-labelledby="hero-heading">
             <div class="hero-content">
                 <div class="imagenHome">
-             <img src="https://img.genially.com/603d2e15ce6f992f4ab5848c/eafe3750-08d2-4650-88ea-06579d93ea9b.png" alt="Texto alternativo">
-        </div>
-                <h2>Bienvenido Jaguar al Portal Universitario</h2>
-                <h2>{{ authService.currentUserNombreCompleto || 'Cargando' }}</h2>
-                <p>Accede a los últimos anuncios y programa tus tutorías de manera fácil y rápida.</p>
+                    <img src="https://img.genially.com/603d2e15ce6f992f4ab5848c/eafe3750-08d2-4650-88ea-06579d93ea9b.png" 
+                         alt="Portal Universitario CEUTEC" tabindex="0">
+                </div>
+                <h2 id="hero-heading" tabindex="0">Bienvenido Jaguar al Portal Universitario</h2>
+                <h2 tabindex="0">{{ authService.currentUserNombreCompleto || 'Cargando' }}</h2>
+                <p tabindex="0">Accede a los últimos anuncios y programa tus tutorías de manera fácil y rápida.</p>
                 <div class="hero-buttons">
-                    <a routerLink="/post-feed" class="btn">Ver Anuncios</a>
-                    <a routerLink="/solicitudtutoria-form" class="btn btn-secondary">Agendar Tutoría</a>
+                    <a routerLink="/post-feed" class="btn" tabindex="0" aria-label="Ver anuncios del portal">
+                        Ver Anuncios
+                    </a>
+                    <a routerLink="/solicitudtutoria-form" class="btn btn-secondary" tabindex="0" 
+                       aria-label="Agendar una tutoría">
+                        Agendar Tutoría
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <i class="fas fa-bullhorn"></i>
-                <h3>Anuncios</h3>
-                <p>Mantente al día con las últimas noticias y avisos importantes.</p>
-                <a routerLink="/post-feed">Ver más</a>
+        <section class="features" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="sr-only">Características principales del portal</h2>
+            <div class="feature-card" tabindex="0">
+                <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                <h3 tabindex="0">Anuncios</h3>
+                <p tabindex="0">Mantente al día con las últimas noticias y avisos importantes.</p>
+                <a routerLink="/post-feed" tabindex="0" aria-label="Ver más sobre anuncios">
+                    Ver más
+                </a>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <h3>Tutorías</h3>
-                <p>Programa sesiones con tus tutores y mejora tu aprendizaje.</p>
-                 <a routerLink="/tutorias-feed">Ver más</a>
+            <div class="feature-card" tabindex="0">
+                <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+                <h3 tabindex="0">Tutorías</h3>
+                <p tabindex="0">Programa sesiones con tus tutores y mejora tu aprendizaje.</p>
+                <a routerLink="/tutorias-feed" tabindex="0" aria-label="Ver más sobre tutorías">
+                    Ver más
+                </a>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-calendar-check"></i>
-                <h3>Eventos</h3>
-                <p>Consulta fechas importantes y actividades universitarias.</p>
-             <a routerLink="/eventos-feed">Ver más</a>
+            <div class="feature-card" tabindex="0">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                <h3 tabindex="0">Eventos</h3>
+                <p tabindex="0">Consulta fechas importantes y actividades universitarias.</p>
+                <a routerLink="/eventos-feed" tabindex="0" aria-label="Ver más sobre eventos">
+                    Ver más
+                </a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
+    <footer role="contentinfo">
+        <p tabindex="0">&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
         <div class="social-links">
-            <a href="https://www.facebook.com/Ceutechn"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/ceutec_hn"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/ceutec_hn"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/Ceutechn" target="_blank" tabindex="0" 
+               aria-label="Síguenos en Facebook">
+                <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://x.com/ceutec_hn" target="_blank" tabindex="0" 
+               aria-label="Síguenos en Twitter">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/ceutec_hn" target="_blank" tabindex="0" 
+               aria-label="Síguenos en Instagram">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
         </div>
     </footer>
 </body>
 </html>
-

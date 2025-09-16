@@ -1,12 +1,12 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <a routerLink="/" class="navbar-logo" (click)="onNavLinkClick()"></a>
+    <a routerLink="/" class="navbar-logo" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Página de inicio"></a>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <div class="imagenHome">
-      <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC">
+      <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC" tabindex="0">
     </div>
      <div class="imagenHome2">
-      <img src="https://ceutec.hn/wp-content/uploads/2025/01/logo-blanco-ceutec.png" alt="Logo UNITEC">
+      <img src="https://ceutec.hn/wp-content/uploads/2025/01/logo-blanco-ceutec.png" alt="Logo CEUTEC" tabindex="0">
     </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -14,47 +14,59 @@
     <button class="mobile-menu-btn" 
             (click)="toggleMenu()" 
             [class.change]="isMenuOpen"
-            aria-label="Menú"
-            aria-expanded="isMenuOpen">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
+            attr.aria-label="Menú de navegación"
+            [attr.aria-expanded]="isMenuOpen"
+            tabindex="0">
+      <span class="hamburger-line" aria-hidden="true"></span>
+      <span class="hamburger-line" aria-hidden="true"></span>
+      <span class="hamburger-line" aria-hidden="true"></span>
     </button>
     
     <ul class="navbar-menu" [class.active]="isMenuOpen">
       <li class="navbar-item important">
-        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()"><i class="fas fa-home icon-desktop"></i>  Inicio</a>
-
+        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ir a Inicio">
+          <i class="fas fa-home icon-desktop" aria-hidden="true"></i> Inicio
+        </a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()"><i class="fas fa-bullhorn icon-desktop"></i> Anuncios</a>
-
+        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver anuncios">
+          <i class="fas fa-bullhorn icon-desktop" aria-hidden="true"></i> Anuncios
+        </a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-chalkboard-teacher icon-desktop"></i> Tutorías</a>
-
+        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver tutorías">
+          <i class="fas fa-chalkboard-teacher icon-desktop" aria-hidden="true"></i> Tutorías
+        </a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()"> <i class="fas fa-calendar-alt icon-desktop"></i>  Eventos</a>
+        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver eventos">
+          <i class="fas fa-calendar-alt icon-desktop" aria-hidden="true"></i> Eventos
+        </a>
       </li>
-      <!-- Reemplaza solo el <li> de "Más" por este código -->
-<li class="navbar-item important dropdown" 
-    (click)="handleDropdownClick($event)"
-    [class.active]="isDropdownOpen">
-  <a class="navbar-link">Más <span class="dropdown-arrow">▼</span></a>
-  <div class="dropdown-content">
-    <a class="dropdown-item"  (click)="cerrarSesion()">Cerrar Sesión</a>
-    <a routerLink="/profile" class="navbar-link" (click)="onNavLinkClick()"> Perfil</a>
-@if (isAdmin) {
- <a routerLink="/user-admin" class="navbar-link" (click)="onNavLinkClick()"> Administración de Usuarios</a>
-   
-}
-  </div>
-</li>
+      <!-- Dropdown de Más opciones -->
+      <li class="navbar-item important dropdown" 
+          (click)="handleDropdownClick($event)"
+          [class.active]="isDropdownOpen"
+          tabindex="0">
+        <a class="navbar-link" attr.aria-label="Más opciones" attr.aria-haspopup="true" [attr.aria-expanded]="isDropdownOpen">
+          Más <span class="dropdown-arrow" aria-hidden="true">▼</span>
+        </a>
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="cerrarSesion()" tabindex="0" attr.aria-label="Cerrar sesión">
+            Cerrar Sesión
+          </a>
+          <a routerLink="/profile" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver perfil">
+            Perfil
+          </a>
+          @if (isAdmin) {
+          <a routerLink="/user-admin" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Administración de usuarios">
+            Administración de Usuarios
+          </a>
+          }
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
 
-    
 <router-outlet></router-outlet>
-

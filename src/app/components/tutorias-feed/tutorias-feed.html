@@ -6,22 +6,23 @@
     <title>Tutorías Universitarias</title>
 </head>
 <body>
-    <h1>Tutorías 📚</h1>
+    <h1 tabindex="0">Tutorías 📚</h1>
     <div class="platform-container">
         <!-- Contenido principal -->
         <div class="post-feed-container">
             <div class="header">
                 <div class="search-bar">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Buscar tutorías..." (input)="buscarTutorias($event)">
+                    <span tabindex="0" aria-label="Buscar">🔍</span>
+                    <input type="text" placeholder="Buscar tutorías..." (input)="buscarTutorias($event)"
+                           tabindex="0" aria-label="Buscar tutorías">
                 </div>
                 
                 <div class="header-actions">
-                    <span class="header-icon">💬 <span class="badge">3</span></span>
-                    <span class="header-icon">🔔 <span class="badge">7</span></span>
-                   <a href="https://m365.cloud.microsoft/chat" target="_blank">
-  <span class="header-icon">📩</span>
-</a>
+                    <span class="header-icon" tabindex="0" aria-label="Mensajes, 3 no leídos">💬 <span class="badge">3</span></span>
+                    <span class="header-icon" tabindex="0" aria-label="Notificaciones, 7 no leídas">🔔 <span class="badge">7</span></span>
+                    <a href="https://m365.cloud.microsoft/chat" target="_blank" tabindex="0" aria-label="Chat Microsoft 365">
+                        <span class="header-icon">📩</span>
+                    </a>
                 </div>
             </div>
             
@@ -29,51 +30,58 @@
                 @if (isAdmin) {
                 <!-- Botón para crear nueva tutoría -->
                 <div class="create-post">
-                    <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" alt="Usuario" class="post-avatar">
-                    <input type="text" class="post-input" placeholder="Crear nueva tutoría" routerLink="/tutoria-form" readonly>
+                    <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" 
+                         alt="Foto de perfil del usuario" class="post-avatar" tabindex="0">
+                    <input type="text" class="post-input" placeholder="Crear nueva tutoría" 
+                           routerLink="/tutoria-form" readonly tabindex="0" aria-label="Crear nueva tutoría">
                 </div>
-            }
+                }
+                
                 <!-- Lista dinámica de tutorías -->
                 @for (tutoria of tutoriasFiltradas; track tutoria.uuid) {
-                <div class="post">
+                <div class="post" tabindex="0">
                     <div class="post-header">
-                        <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" alt="Usuario" class="post-avatar">
+                        <img src="https://pbs.twimg.com/profile_images/1881177470616907776/e2WyqeAN_400x400.jpg" 
+                             alt="Foto de perfil de {{ tutoria.nombre }}" class="post-avatar" tabindex="0">
                         <div>
-                            <div class="post-user">{{ tutoria.nombre }}</div>
-                            <div class="post-meta">{{ formatDate(tutoria.fechaHora) }} | {{ tutoria.carrera }}</div>
+                            <div class="post-user" tabindex="0">{{ tutoria.nombre }}</div>
+                            <div class="post-meta" tabindex="0">{{ formatDate(tutoria.fechaHora) }} | {{ tutoria.carrera }}</div>
                         </div>
                     </div>
                     
                     <div class="post-content">
-                        <h3>{{ tutoria.titulo }}</h3>
+                        <h3 tabindex="0">{{ tutoria.titulo }}</h3>
                         <div class="tutoria-detalles">
-                            <p><strong>Lugar:</strong> {{ tutoria.lugar }}</p>
-                            <p><strong>Horarios:</strong> {{ tutoria.horarios }}</p>
+                            <p tabindex="0"><strong>Lugar:</strong> {{ tutoria.lugar }}</p>
+                            <p tabindex="0"><strong>Horarios:</strong> {{ tutoria.horarios }}</p>
                         </div>
-                        <p>{{ tutoria.cuerpo }}</p>
+                        <p tabindex="0">{{ tutoria.cuerpo }}</p>
                     </div>
                     
                     @if (isAdmin) {
                     <!-- Botones de acciones -->
                     <div class="post-actions">
-                        <button (click)="eliminarTutoria(tutoria.uuid)" class="delete-btn">
+                        <button (click)="eliminarTutoria(tutoria.uuid)" class="delete-btn" 
+                                tabindex="0" aria-label="Eliminar tutoría">
                             🗑️ Eliminar
                         </button>
-                        <button (click)="editarTutoria(tutoria)" class="edit-btn">
+                        <button (click)="editarTutoria(tutoria)" class="edit-btn" 
+                                tabindex="0" aria-label="Editar tutoría">
                             ✏️ Editar
                         </button>
-                    </div>}  
+                    </div>
+                    }  
                 </div>
                 } @empty {
-                <div class="post">
-                    <p>No hay tutorías programadas aún.</p>
+                <div class="post" tabindex="0">
+                    <p tabindex="0">No hay tutorías programadas aún.</p>
                 </div>
                 }
             </div>
         </div>
     </div>
     <footer>
-        <p>&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
+        <p tabindex="0">&copy; 2025 Portal Universitario CEUTEC - Todos los derechos reservados.</p>
         <div class="social-links">
             <!-- Puedes agregar íconos sociales aquí si lo deseas -->
         </div>

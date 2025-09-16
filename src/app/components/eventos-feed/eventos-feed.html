@@ -6,80 +6,83 @@
     <title>Eventos Universitarios</title>
 </head>
 <body>
-    <h1>Eventos 📅</h1>
+    <h1 tabindex="0">Eventos 📅</h1>
     <div class="platform-container">
         <div class="post-feed-container">
             <div class="header">
                 <div class="search-bar">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Buscar eventos..." (input)="buscarEventos($event)">
+                    <span tabindex="0" aria-label="Buscar eventos">🔍</span>
+                    <input type="text" placeholder="Buscar eventos..." (input)="buscarEventos($event)"
+                           tabindex="0" aria-label="Buscar eventos">
                 </div>
                 @if (isAdmin) {
-
                 <div class="header-actions">
-                    <button class="nuevo-evento-btn" (click)="nuevoEvento()">
+                    <button class="nuevo-evento-btn" (click)="nuevoEvento()" 
+                            tabindex="0" attr.aria-label="Crear nuevo evento">
                         ＋ Nuevo Evento
                     </button>
-                </div>}
+                </div>
+                }
             </div>
             
             <div class="post-feed">
                 @if (cargando) {
-                <div class="cargando-eventos">
-                    <div class="spinner"></div>
-                    <p>Cargando eventos...</p>
+                <div class="cargando-eventos" tabindex="0" aria-label="Cargando eventos">
+                    <div class="spinner" aria-hidden="true"></div>
+                    <p tabindex="0">Cargando eventos...</p>
                 </div>
                 } @else {
                   @for (evento of eventosFiltrados; track evento.uuid) {
-                  <div class="evento-card">
+                  <div class="evento-card" tabindex="0">
                       <div class="evento-header">
-                          <div class="evento-fecha">
+                          <div class="evento-fecha" tabindex="0">
                               <div class="evento-fecha-dia">{{ getDiaEvento(evento.fecha) }}</div>
                               <div class="evento-fecha-mes">{{ getMesEvento(evento.fecha) }}</div>
                           </div>
                           
                           <div class="evento-info">
-                              <h3>{{ evento.titulo }}</h3>
-                              <p class="evento-resumen">{{ evento.brevedescripcion }}</p>
+                              <h3 tabindex="0">{{ evento.titulo }}</h3>
+                              <p class="evento-resumen" tabindex="0">{{ evento.brevedescripcion }}</p>
                           </div>
                       </div>
                       
                       <div class="evento-detalles">
-                          <div class="detalle-item">
-                              <span class="detalle-icono">📅</span>
+                          <div class="detalle-item" tabindex="0">
+                              <span class="detalle-icono" aria-hidden="true">📅</span>
                               <span>{{ formatFechaHoraEvento(evento.fecha, evento.hora) }}</span>
                           </div>
                           
-                          <div class="detalle-item">
-                              <span class="detalle-icono">📍</span>
+                          <div class="detalle-item" tabindex="0">
+                              <span class="detalle-icono" aria-hidden="true">📍</span>
                               <span>{{ evento.lugar }}</span>
                           </div>
-                          
-                
                       </div>
                       
                       <div class="evento-descripcion">
-                          <p>{{ evento.descripcion }}</p>
+                          <p tabindex="0">{{ evento.descripcion }}</p>
                       </div>
                       
                       <div class="evento-footer">
-                          <span class="evento-carrera">{{ evento.carrera }}</span>
+                          <span class="evento-carrera" tabindex="0">{{ evento.carrera }}</span>
                           @if (isAdmin) {
-
                           <div class="evento-acciones">
-                              <button (click)="editarEvento(evento)" class="accion-btn editar">
+                              <button (click)="editarEvento(evento)" class="accion-btn editar" 
+                                      tabindex="0" attr.aria-label="Editar evento {{ evento.titulo }}">
                                   ✏️ Editar
                               </button>
-                              <button (click)="eliminarEvento(evento.uuid)" class="accion-btn eliminar">
+                              <button (click)="eliminarEvento(evento.uuid)" class="accion-btn eliminar" 
+                                      tabindex="0" attr.aria-label="Eliminar evento {{ evento.titulo }}">
                                   🗑️ Eliminar
                               </button>
-                          </div>}
+                          </div>
+                          }
                       </div>
                   </div>
                   } @empty {
-                  <div class="sin-eventos">
-                      <p>No hay eventos programados aún.</p>
-                      <button (click)="nuevoEvento()" class="nuevo-evento-btn">
+                  <div class="sin-eventos" tabindex="0">
+                      <p tabindex="0">No hay eventos programados aún.</p>
+                      <button (click)="nuevoEvento()" class="nuevo-evento-btn" 
+                              tabindex="0" attr.aria-label="Crear primer evento">
                           ＋ Crear Primer Evento
                       </button>
                   </div>
