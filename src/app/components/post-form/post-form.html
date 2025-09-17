@@ -1,26 +1,58 @@
-<form (ngSubmit)="guardarAnuncio()" [formGroup]="anuncioForm">
-  <div>
-  <label>Título del Anuncio *</label>
-  <input formControlName="titulo" type="text">
-  @if (anuncioForm.get('titulo')?.invalid && anuncioForm.get('titulo')?.touched) {
-    <small>Este campo es obligatorio</small>
-  }
-</div>
+<form (ngSubmit)="guardarAnuncio()" [formGroup]="anuncioForm" role="form" aria-labelledby="anuncio-heading">
+  <div class="form-group">
+    <label for="titulo-anuncio" tabindex="0">Título del Anuncio *</label>
+    <input 
+      id="titulo-anuncio" 
+      formControlName="titulo" 
+      type="text"
+      tabindex="0"
+      aria-required="true"
+      aria-describedby="titulo-error"
+      placeholder="Ingresa el título del anuncio"
+    >
+    @if (anuncioForm.get('titulo')?.invalid && anuncioForm.get('titulo')?.touched) {
+      <small class="error-message" id="titulo-error" role="alert" tabindex="0">
+        Este campo es obligatorio
+      </small>
+    }
+  </div>
 
-<div>
-  <label>Contenido del Anuncio *</label>
-  <textarea formControlName="cuerpo" rows="4"></textarea>
-  @if (anuncioForm.get('cuerpo')?.invalid && anuncioForm.get('cuerpo')?.touched) {
-    <small>Este campo es obligatorio</small>
-  }
-</div>
+  <div class="form-group">
+    <label for="contenido-anuncio" tabindex="0">Contenido del Anuncio *</label>
+    <textarea 
+      id="contenido-anuncio" 
+      formControlName="cuerpo" 
+      rows="4"
+      tabindex="0"
+      aria-required="true"
+      aria-describedby="contenido-error"
+      placeholder="Escribe el contenido del anuncio aquí"
+    ></textarea>
+    @if (anuncioForm.get('cuerpo')?.invalid && anuncioForm.get('cuerpo')?.touched) {
+      <small class="error-message" id="contenido-error" role="alert" tabindex="0">
+        Este campo es obligatorio
+      </small>
+    }
+  </div>
 
-  <button type="submit" [disabled]="anuncioForm.invalid">
-    {{ anuncioForm.get('uuid')?.value ? 'Actualizar' : 'Publicar' }}
-  </button>
-  <br>
-  <br>
-  <button type="button" routerLink="/post-feed" class="cancel-btn">
-    Volver al Feed
-  </button>
+  <div class="button-group">
+    <button 
+      type="submit" 
+      [disabled]="anuncioForm.invalid"
+      tabindex="0"
+      attr.aria-label="{{ anuncioForm.get('uuid')?.value ? 'Actualizar anuncio' : 'Publicar anuncio' }}"
+    >
+      {{ anuncioForm.get('uuid')?.value ? 'Actualizar' : 'Publicar' }}
+    </button>
+    
+    <button 
+      type="button" 
+      routerLink="/post-feed" 
+      class="cancel-btn"
+      tabindex="0"
+      aria-label="Volver al feed de anuncios"
+    >
+      Volver al Feed
+    </button>
+  </div>
 </form>

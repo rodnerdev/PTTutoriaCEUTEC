@@ -2,206 +2,237 @@
     <br>
 </div>
 <div class="container">
-    <div class="card">
+    <div class="card" role="region" aria-labelledby="register-heading">
         <div class="card-header">
             <div class="imagenHome">
-                <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC">
+                <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC" tabindex="0">
             </div>
-            <h1>Portal Informativo</h1>
-            <p>Crear Cuenta</p>
+            <h1 id="register-heading" tabindex="0">Portal Informativo</h1>
+            <p tabindex="0">Crear Cuenta</p>
         </div>
         
         <div class="card-body">
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate role="form" aria-labelledby="register-heading">
                 <!-- Email -->
                 <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
+                    <label for="email" tabindex="0">Correo Electrónico</label>
                     <input 
                         type="email" 
                         id="email" 
                         formControlName="email"
                         placeholder="Ingrese su correo electrónico"
                         [class.invalid]="f['email'].invalid && f['email'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="email-error"
                     >
-                    <div *ngIf="f['email'].invalid && f['email'].touched" class="error-message">
-                        <small *ngIf="f['email'].errors?.['required']">El correo es requerido</small>
-                        <small *ngIf="f['email'].errors?.['email']">Formato de correo inválido</small>
+                    <div *ngIf="f['email'].invalid && f['email'].touched" class="error-message" id="email-error" role="alert">
+                        <small *ngIf="f['email'].errors?.['required']" tabindex="0">El correo es requerido</small>
+                        <small *ngIf="f['email'].errors?.['email']" tabindex="0">Formato de correo inválido</small>
                     </div>
                 </div>
                 
                 <!-- Password -->
                 <div class="form-group">
-                    <label for="password">Contraseña</label>
+                    <label for="password" tabindex="0">Contraseña</label>
                     <input 
                         type="password" 
                         id="password" 
                         formControlName="password"
                         placeholder="Mínimo 6 caracteres"
                         [class.invalid]="f['password'].invalid && f['password'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="password-error"
                     >
-                    <div *ngIf="f['password'].invalid && f['password'].touched" class="error-message">
-                        <small *ngIf="f['password'].errors?.['required']">La contraseña es requerida</small>
-                        <small *ngIf="f['password'].errors?.['minlength']">Mínimo 6 caracteres</small>
+                    <div *ngIf="f['password'].invalid && f['password'].touched" class="error-message" id="password-error" role="alert">
+                        <small *ngIf="f['password'].errors?.['required']" tabindex="0">La contraseña es requerida</small>
+                        <small *ngIf="f['password'].errors?.['minlength']" tabindex="0">Mínimo 6 caracteres</small>
                     </div>
                 </div>
                 
                 <!-- Confirm Password -->
                 <div class="form-group">
-                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <label for="confirmPassword" tabindex="0">Confirmar Contraseña</label>
                     <input 
                         type="password" 
                         id="confirmPassword" 
                         formControlName="confirmPassword"
                         placeholder="Repite tu contraseña"
                         [class.invalid]="(f['confirmPassword'].invalid && f['confirmPassword'].touched) || passwordMismatchError"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="confirm-password-error"
                     >
-                    <div *ngIf="f['confirmPassword'].invalid && f['confirmPassword'].touched" class="error-message">
-                        <small *ngIf="f['confirmPassword'].errors?.['required']">Confirma tu contraseña</small>
+                    <div *ngIf="f['confirmPassword'].invalid && f['confirmPassword'].touched" class="error-message" id="confirm-password-error" role="alert">
+                        <small *ngIf="f['confirmPassword'].errors?.['required']" tabindex="0">Confirma tu contraseña</small>
                     </div>
-                    <div *ngIf="passwordMismatchError" class="error-message">
-                        <small>Las contraseñas no coinciden</small>
+                    <div *ngIf="passwordMismatchError" class="error-message" role="alert">
+                        <small tabindex="0">Las contraseñas no coinciden</small>
                     </div>
                 </div>
 
                 <!-- Primer Nombre -->
                 <div class="form-group">
-                    <label for="primerNombre">Primer Nombre *</label>
+                    <label for="primerNombre" tabindex="0">Primer Nombre *</label>
                     <input 
                         type="text" 
                         id="primerNombre" 
                         formControlName="primerNombre"
                         placeholder="Tu primer nombre"
                         [class.invalid]="f['primerNombre'].invalid && f['primerNombre'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="primer-nombre-error"
                     >
-                    <div *ngIf="f['primerNombre'].invalid && f['primerNombre'].touched" class="error-message">
-                        <small *ngIf="f['primerNombre'].errors?.['required']">El primer nombre es requerido</small>
-                        <small *ngIf="f['primerNombre'].errors?.['minlength']">Mínimo 2 caracteres</small>
-                        <small *ngIf="f['primerNombre'].errors?.['pattern']">Solo se permiten letras</small>
+                    <div *ngIf="f['primerNombre'].invalid && f['primerNombre'].touched" class="error-message" id="primer-nombre-error" role="alert">
+                        <small *ngIf="f['primerNombre'].errors?.['required']" tabindex="0">El primer nombre es requerido</small>
+                        <small *ngIf="f['primerNombre'].errors?.['minlength']" tabindex="0">Mínimo 2 caracteres</small>
+                        <small *ngIf="f['primerNombre'].errors?.['pattern']" tabindex="0">Solo se permiten letras</small>
                     </div>
                 </div>
 
                 <!-- Segundo Nombre -->
                 <div class="form-group">
-                    <label for="segundoNombre">Segundo Nombre (Opcional)</label>
+                    <label for="segundoNombre" tabindex="0">Segundo Nombre (Opcional)</label>
                     <input 
                         type="text" 
                         id="segundoNombre" 
                         formControlName="segundoNombre"
                         placeholder="Tu segundo nombre"
                         [class.invalid]="f['segundoNombre'].invalid && f['segundoNombre'].touched"
+                        tabindex="0"
+                        aria-describedby="segundo-nombre-error"
                     >
-                    <div *ngIf="f['segundoNombre'].invalid && f['segundoNombre'].touched" class="error-message">
-                        <small *ngIf="f['segundoNombre'].errors?.['pattern']">Solo se permiten letras</small>
+                    <div *ngIf="f['segundoNombre'].invalid && f['segundoNombre'].touched" class="error-message" id="segundo-nombre-error" role="alert">
+                        <small *ngIf="f['segundoNombre'].errors?.['pattern']" tabindex="0">Solo se permiten letras</small>
                     </div>
                 </div>
 
                 <!-- Primer Apellido -->
                 <div class="form-group">
-                    <label for="primerApellido">Primer Apellido *</label>
+                    <label for="primerApellido" tabindex="0">Primer Apellido *</label>
                     <input 
                         type="text" 
                         id="primerApellido" 
                         formControlName="primerApellido"
                         placeholder="Tu primer apellido"
                         [class.invalid]="f['primerApellido'].invalid && f['primerApellido'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="primer-apellido-error"
                     >
-                    <div *ngIf="f['primerApellido'].invalid && f['primerApellido'].touched" class="error-message">
-                        <small *ngIf="f['primerApellido'].errors?.['required']">El primer apellido es requerido</small>
-                        <small *ngIf="f['primerApellido'].errors?.['minlength']">Mínimo 2 caracteres</small>
-                        <small *ngIf="f['primerApellido'].errors?.['pattern']">Solo se permiten letras</small>
+                    <div *ngIf="f['primerApellido'].invalid && f['primerApellido'].touched" class="error-message" id="primer-apellido-error" role="alert">
+                        <small *ngIf="f['primerApellido'].errors?.['required']" tabindex="0">El primer apellido es requerido</small>
+                        <small *ngIf="f['primerApellido'].errors?.['minlength']" tabindex="0">Mínimo 2 caracteres</small>
+                        <small *ngIf="f['primerApellido'].errors?.['pattern']" tabindex="0">Solo se permiten letras</small>
                     </div>
                 </div>
 
                 <!-- Segundo Apellido -->
                 <div class="form-group">
-                    <label for="segundoApellido">Segundo Apellido (Opcional)</label>
+                    <label for="segundoApellido" tabindex="0">Segundo Apellido (Opcional)</label>
                     <input 
                         type="text" 
                         id="segundoApellido" 
                         formControlName="segundoApellido"
                         placeholder="Tu segundo apellido"
                         [class.invalid]="f['segundoApellido'].invalid && f['segundoApellido'].touched"
+                        tabindex="0"
+                        aria-describedby="segundo-apellido-error"
                     >
-                    <div *ngIf="f['segundoApellido'].invalid && f['segundoApellido'].touched" class="error-message">
-                        <small *ngIf="f['segundoApellido'].errors?.['pattern']">Solo se permiten letras</small>
+                    <div *ngIf="f['segundoApellido'].invalid && f['segundoApellido'].touched" class="error-message" id="segundo-apellido-error" role="alert">
+                        <small *ngIf="f['segundoApellido'].errors?.['pattern']" tabindex="0">Solo se permiten letras</small>
                     </div>
                 </div>
 
                 <!-- Universidad -->
                 <div class="form-group">
-                    <label for="universidad">Universidad *</label>
+                    <label for="universidad" tabindex="0">Universidad *</label>
                     <select 
                         id="universidad" 
                         formControlName="universidad"
                         [class.invalid]="f['universidad'].invalid && f['universidad'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="universidad-error"
                     >
                         <option value="">Selecciona una universidad</option>
                         <option *ngFor="let uni of universidades" [value]="uni">{{ uni }}</option>
                     </select>
-                    <div *ngIf="f['universidad'].invalid && f['universidad'].touched" class="error-message">
-                        <small>Selecciona una universidad</small>
+                    <div *ngIf="f['universidad'].invalid && f['universidad'].touched" class="error-message" id="universidad-error" role="alert">
+                        <small tabindex="0">Selecciona una universidad</small>
                     </div>
                 </div>
 
                 <!-- Ciudad -->
                 <div class="form-group">
-                    <label for="ciudad">Ciudad *</label>
+                    <label for="ciudad" tabindex="0">Ciudad *</label>
                     <select 
                         id="ciudad" 
                         formControlName="ciudad"
                         [class.invalid]="f['ciudad'].invalid && f['ciudad'].touched"
                         [disabled]="!f['universidad'].value"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="ciudad-error"
                     >
                         <option value="">Selecciona una ciudad</option>
                         <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad">{{ ciudad }}</option>
                     </select>
-                    <div *ngIf="f['ciudad'].invalid && f['ciudad'].touched" class="error-message">
-                        <small>Selecciona una ciudad</small>
+                    <div *ngIf="f['ciudad'].invalid && f['ciudad'].touched" class="error-message" id="ciudad-error" role="alert">
+                        <small tabindex="0">Selecciona una ciudad</small>
                     </div>
-                    <small *ngIf="!f['universidad'].value" class="hint">Primero selecciona una universidad</small>
+                    <small *ngIf="!f['universidad'].value" class="hint" tabindex="0">Primero selecciona una universidad</small>
                 </div>
 
                 <!-- Carrera -->
                 <div class="form-group">
-                    <label for="carrera">Carrera *</label>
+                    <label for="carrera" tabindex="0">Carrera *</label>
                     <select 
                         id="carrera" 
                         formControlName="carrera"
                         [class.invalid]="f['carrera'].invalid && f['carrera'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="carrera-error"
                     >
                         <option value="">Selecciona una carrera</option>
                         <option *ngFor="let carrera of carreras" [value]="carrera">{{ carrera }}</option>
                     </select>
-                    <div *ngIf="f['carrera'].invalid && f['carrera'].touched" class="error-message">
-                        <small>Selecciona una carrera</small>
+                    <div *ngIf="f['carrera'].invalid && f['carrera'].touched" class="error-message" id="carrera-error" role="alert">
+                        <small tabindex="0">Selecciona una carrera</small>
                     </div>
                 </div>
 
                 <!-- Rol -->
                 <div class="form-group">
-                    <label for="rol">Rol *</label>
+                    <label for="rol" tabindex="0">Rol *</label>
                     <select 
                         id="rol" 
                         formControlName="rol"
                         [class.invalid]="f['rol'].invalid && f['rol'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="rol-error"
                     >
                         <option value="">Selecciona un rol</option>
                         <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
                     </select>
-                    <div *ngIf="f['rol'].invalid && f['rol'].touched" class="error-message">
-                        <small>Selecciona un rol</small>
+                    <div *ngIf="f['rol'].invalid && f['rol'].touched" class="error-message" id="rol-error" role="alert">
+                        <small tabindex="0">Selecciona un rol</small>
                     </div>
                 </div>
 
                 <!-- Mensajes de éxito y error -->
-                <div *ngIf="errorMessage" class="error-message global-error">
+                <div *ngIf="errorMessage" class="error-message global-error" role="alert" tabindex="0">
                     {{ errorMessage }}
                 </div>
                 
-                <div *ngIf="successMessage" class="success-message global-success">
+                <div *ngIf="successMessage" class="success-message global-success" role="status" tabindex="0">
                     {{ successMessage }}
                     <br>
-                    <small>Redirigiendo al login...</small>
+                    <small tabindex="0">Redirigiendo al login...</small>
                 </div>
 
                 <!-- Botones -->
@@ -210,6 +241,8 @@
                         type="submit" 
                         class="register-btn" 
                         [disabled]="loading || registerForm.invalid"
+                        tabindex="0"
+                       aria-label="Crear cuenta"
                     >
                         {{ loading ? 'Creando cuenta...' : 'Crear Cuenta' }}
                     </button>
@@ -219,6 +252,8 @@
                         class="back-btn" 
                         (click)="volverAlLogin()"
                         [disabled]="loading"
+                        tabindex="0"
+                      aria-label="Volver al login"
                     >
                         ← Volver al Login
                     </button>
@@ -227,11 +262,11 @@
         </div>
         
         <div class="card-footer">
-            <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión aquí</a></p>
-            <p class="terms">
+            <p tabindex="0">¿Ya tienes cuenta? <a routerLink="/login" tabindex="0" aria-label="Iniciar sesión">Inicia sesión aquí</a></p>
+            <p class="terms" tabindex="0">
                 Al registrarte, aceptas nuestros 
-                <a href="#">Términos de Servicio</a> y 
-                <a href="#">Política de Privacidad</a>
+                <a href="#" tabindex="0" aria-label="Ver términos de servicio">Términos de Servicio</a> y 
+                <a href="#" tabindex="0" aria-label="Ver política de privacidad">Política de Privacidad</a>
             </p>
         </div>
     </div>
