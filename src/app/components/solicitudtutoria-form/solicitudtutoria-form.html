@@ -1,30 +1,33 @@
 <div class="container">
-    <div class="card">
+    <div class="card" role="region" aria-labelledby="tutoria-heading">
         <div class="card-header">
-            <h2>📚 Solicitud de Tutoría</h2>
-            <p>Completa el formulario para solicitar una tutoría</p>
+            <h2 id="tutoria-heading" tabindex="0">📚 Solicitud de Tutoría</h2>
+            <p tabindex="0">Completa el formulario para solicitar una tutoría</p>
         </div>
 
         <div class="card-body">
-            <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()" novalidate>
+            <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()" novalidate role="form" aria-labelledby="tutoria-heading">
                 
                 <!-- Campo: Clase/Materia -->
                 <div class="form-group">
-                    <label for="clase">Clase/Materia *</label>
+                    <label for="clase" tabindex="0">Clase/Materia *</label>
                     <input 
                         type="text" 
                         id="clase" 
                         formControlName="clase"
                         placeholder="Ej: Matemáticas Avanzadas, Programación I, Física"
                         [class.invalid]="f['clase'].invalid && f['clase'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="clase-error"
                     >
                     @if (f['clase'].invalid && f['clase'].touched) {
-                    <div class="error-message">
+                    <div class="error-message" id="clase-error" role="alert">
                         @if (f['clase'].errors?.['required']) {
-                        <small>La clase es requerida</small>
+                        <small tabindex="0">La clase es requerida</small>
                         }
                         @if (f['clase'].errors?.['minlength']) {
-                        <small>Mínimo 3 caracteres</small>
+                        <small tabindex="0">Mínimo 3 caracteres</small>
                         }
                     </div>
                     }
@@ -32,52 +35,57 @@
 
                 <!-- Campo: Temas -->
                 <div class="form-group">
-                    <label for="temas">Temas específicos *</label>
+                    <label for="temas" tabindex="0">Temas específicos *</label>
                     <textarea 
                         id="temas" 
                         formControlName="temas"
                         placeholder="Describe los temas específicos que necesitas repasar o entender mejor..."
                         rows="4"
                         [class.invalid]="f['temas'].invalid && f['temas'].touched"
+                        tabindex="0"
+                        aria-required="true"
+                        aria-describedby="temas-error temas-hint"
                     ></textarea>
                     @if (f['temas'].invalid && f['temas'].touched) {
-                    <div class="error-message">
+                    <div class="error-message" id="temas-error" role="alert">
                         @if (f['temas'].errors?.['required']) {
-                        <small>Los temas son requeridos</small>
+                        <small tabindex="0">Los temas son requeridos</small>
                         }
                         @if (f['temas'].errors?.['minlength']) {
-                        <small>Por favor, describe al menos 10 caracteres</small>
+                        <small tabindex="0">Por favor, describe al menos 10 caracteres</small>
                         }
                     </div>
                     }
-                    <small class="hint">Ej: Derivadas parciales, loops en Python, ecuaciones diferenciales, etc.</small>
+                    <small class="hint" id="temas-hint" tabindex="0">Ej: Derivadas parciales, loops en Python, ecuaciones diferenciales, etc.</small>
                 </div>
 
                 <!-- Campo: Demás Alumnos (Opcional) -->
                 <div class="form-group">
-                    <label for="demasAlumnos">Compañeros de estudio (Opcional)</label>
+                    <label for="demasAlumnos" tabindex="0">Compañeros de estudio (Opcional)</label>
                     <input 
                         type="text" 
                         id="demasAlumnos" 
                         formControlName="demasAlumnos"
                         placeholder="Nombres de otros alumnos que también necesitan la tutoría"
+                        tabindex="0"
+                        aria-describedby="demas-alumnos-hint"
                     >
-                    <small class="hint">Separa los nombres con comas. Ej: María García, Juan Pérez, Carlos López</small>
+                    <small class="hint" id="demas-alumnos-hint" tabindex="0">Separa los nombres con comas. Ej: María García, Juan Pérez, Carlos López</small>
                 </div>
 
                 <!-- Información del solicitante (solo lectura) -->
-                <div class="user-info">
-                    <h4>Información del solicitante</h4>
+                <div class="user-info" tabindex="0">
+                    <h4 tabindex="0">Información del solicitante</h4>
                     <div class="info-grid">
-                        <div class="info-item">
+                        <div class="info-item" tabindex="0">
                             <span class="label">Nombre:</span>
                             <span class="value">Se completará automáticamente</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-item" tabindex="0">
                             <span class="label">Universidad:</span>
                             <span class="value">Se completará automáticamente</span>
                         </div>
-                        <div class="info-item">
+                        <div class="info-item" tabindex="0">
                             <span class="label">Carrera:</span>
                             <span class="value">Se completará automáticamente</span>
                         </div>
@@ -90,6 +98,8 @@
                         type="submit" 
                         class="submit-btn" 
                         [disabled]="loading || solicitudForm.invalid"
+                        tabindex="0"
+                        aria-label="Enviar solicitud de tutoría"
                     >
                         @if (!loading) {
                         <span>📨 Enviar Solicitud</span>
@@ -100,18 +110,19 @@
                     </button>
                     
                     <button 
-    type="button" 
-    class="cancel-btn" 
-    [routerLink]="'/home'" 
-    [disabled]="loading"
->
-    ↩️ Cancelar
-</button>
-
+                        type="button" 
+                        class="cancel-btn" 
+                        [routerLink]="'/home'" 
+                        [disabled]="loading"
+                        tabindex="0"
+                        aria-label="Cancelar y volver al inicio"
+                    >
+                        ↩️ Cancelar
+                    </button>
                 </div>
 
                 <!-- Mensaje de campos requeridos -->
-                <div class="required-hint">
+                <div class="required-hint" tabindex="0">
                     <small>* Campos obligatorios</small>
                 </div>
             </form>

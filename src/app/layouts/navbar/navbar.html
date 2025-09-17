@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <a routerLink="/" class="navbar-logo" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Página de inicio"></a>
+    <a routerLink="/" class="navbar-logo" (click)="onNavLinkClick()" tabindex="0" aria-label="Página de inicio"></a>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <div class="imagenHome">
       <img src="https://www.unitec.edu/res/img/logo-unitec-blanco.webp?v=1.0.1" alt="Logo UNITEC" tabindex="0">
@@ -14,7 +14,7 @@
     <button class="mobile-menu-btn" 
             (click)="toggleMenu()" 
             [class.change]="isMenuOpen"
-            attr.aria-label="Menú de navegación"
+           aria-label="Menú de navegación"
             [attr.aria-expanded]="isMenuOpen"
             tabindex="0">
       <span class="hamburger-line" aria-hidden="true"></span>
@@ -24,22 +24,22 @@
     
     <ul class="navbar-menu" [class.active]="isMenuOpen">
       <li class="navbar-item important">
-        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ir a Inicio">
+        <a routerLink="/home" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" aria-label="Ir a Inicio">
           <i class="fas fa-home icon-desktop" aria-hidden="true"></i> Inicio
         </a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver anuncios">
+        <a routerLink="/post-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" aria-label="Ver anuncios">
           <i class="fas fa-bullhorn icon-desktop" aria-hidden="true"></i> Anuncios
         </a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver tutorías">
+        <a routerLink="/tutorias-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" aria-label="Ver tutorías">
           <i class="fas fa-chalkboard-teacher icon-desktop" aria-hidden="true"></i> Tutorías
         </a>
       </li>
       <li class="navbar-item important">
-        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver eventos">
+        <a routerLink="/eventos-feed" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" aria-label="Ver eventos">
           <i class="fas fa-calendar-alt icon-desktop" aria-hidden="true"></i> Eventos
         </a>
       </li>
@@ -48,18 +48,18 @@
           (click)="handleDropdownClick($event)"
           [class.active]="isDropdownOpen"
           tabindex="0">
-        <a class="navbar-link" attr.aria-label="Más opciones" attr.aria-haspopup="true" [attr.aria-expanded]="isDropdownOpen">
+        <a class="navbar-link" aria-label="Más opciones" aria-haspopup="true" [attr.aria-expanded]="isDropdownOpen">
           Más <span class="dropdown-arrow" aria-hidden="true">▼</span>
         </a>
         <div class="dropdown-content">
-          <a class="dropdown-item" (click)="cerrarSesion()" tabindex="0" attr.aria-label="Cerrar sesión">
+          <a class="dropdown-item" (click)="cerrarSesion()" tabindex="0" aria-label="Cerrar sesión">
             Cerrar Sesión
           </a>
-          <a routerLink="/profile" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Ver perfil">
+          <a routerLink="/profile" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" aria-label="Ver perfil">
             Perfil
           </a>
           @if (isAdmin) {
-          <a routerLink="/user-admin" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" attr.aria-label="Administración de usuarios">
+          <a routerLink="/user-admin" class="navbar-link" (click)="onNavLinkClick()" tabindex="0" aria-label="Administración de usuarios">
             Administración de Usuarios
           </a>
           }

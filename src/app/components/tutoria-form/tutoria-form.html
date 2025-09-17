@@ -1,55 +1,69 @@
 <div class="form-container">
-  <h2>{{ tutoriaForm.get('uuid')?.value ? 'Editar Tutoría' : 'Nueva Tutoría' }}</h2>
+  <h2 tabindex="0">{{ tutoriaForm.get('uuid')?.value ? 'Editar Tutoría' : 'Nueva Tutoría' }}</h2>
   
-  <form (ngSubmit)="guardarTutoria()" [formGroup]="tutoriaForm">
+  <form (ngSubmit)="guardarTutoria()" [formGroup]="tutoriaForm" role="form" aria-labelledby="form-heading">
     <div class="form-group">
-      <label for="titulo">Título de la Tutoría *</label>
+      <label for="titulo" tabindex="0">Título de la Tutoría *</label>
       <input id="titulo" formControlName="titulo" type="text" 
-             placeholder="Ej: Tutoría de Programación Avanzada">
+             placeholder="Ej: Tutoría de Programación Avanzada"
+             tabindex="0"
+             aria-required="true"
+             aria-describedby="titulo-error">
       @if (tutoriaForm.get('titulo')?.invalid && tutoriaForm.get('titulo')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="titulo-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-group">
-      <label for="lugar">Lugar *</label>
+      <label for="lugar" tabindex="0">Lugar *</label>
       <input id="lugar" formControlName="lugar" type="text" 
-             placeholder="Ej: Laboratorio de Informática, Edificio C">
+             placeholder="Ej: Laboratorio de Informática, Edificio C"
+             tabindex="0"
+             aria-required="true"
+             aria-describedby="lugar-error">
       @if (tutoriaForm.get('lugar')?.invalid && tutoriaForm.get('lugar')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="lugar-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-group">
-      <label for="horarios">Horarios *</label>
+      <label for="horarios" tabindex="0">Horarios *</label>
       <textarea id="horarios" formControlName="horarios" rows="3"
-                placeholder="Ej: Lunes y Miércoles de 14:00 a 16:00, Viernes de 10:00 a 12:00"></textarea>
+                placeholder="Ej: Lunes y Miércoles de 14:00 a 16:00, Viernes de 10:00 a 12:00"
+                tabindex="0"
+                aria-required="true"
+                aria-describedby="horarios-error"></textarea>
       @if (tutoriaForm.get('horarios')?.invalid && tutoriaForm.get('horarios')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="horarios-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-group">
-      <label for="cuerpo">Descripción Detallada *</label>
+      <label for="cuerpo" tabindex="0">Descripción Detallada *</label>
       <textarea id="cuerpo" formControlName="cuerpo" rows="5"
-                placeholder="Describa los temas que cubrirá la tutoría, requisitos, materiales necesarios..."></textarea>
+                placeholder="Describa los temas que cubrirá la tutoría, requisitos, materiales necesarios..."
+                tabindex="0"
+                aria-required="true"
+                aria-describedby="cuerpo-error"></textarea>
       @if (tutoriaForm.get('cuerpo')?.invalid && tutoriaForm.get('cuerpo')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="cuerpo-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="tutoriaForm.invalid" class="btn btn-primary">
+      <button type="submit" [disabled]="tutoriaForm.invalid" class="btn btn-primary"
+              tabindex="0"
+              attr.aria-label="{{ tutoriaForm.get('uuid')?.value ? 'Actualizar tutoría' : 'Publicar tutoría' }}">
         {{ tutoriaForm.get('uuid')?.value ? 'Actualizar Tutoría' : 'Publicar Tutoría' }}
       </button>
       <br> <br>
-     <button routerLink="/tutorias-feed" 
-       class="btn btn-secondary"
-        style="padding: 10px 20px">
-  Cancelar
-</button>
-      
-    
+      <button routerLink="/tutorias-feed" 
+              class="btn btn-secondary"
+              style="padding: 10px 20px"
+              tabindex="0"
+              aria-label="Cancelar y volver al listado de tutorías">
+        Cancelar
+      </button>
     </div>
   </form>
 </div>

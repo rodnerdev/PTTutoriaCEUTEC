@@ -1,77 +1,98 @@
 <div class="form-container">
-  <h2>{{ eventoForm.get('uuid')?.value ? 'Editar Evento' : 'Nuevo Evento' }}</h2>
+  <h2 tabindex="0">{{ eventoForm.get('uuid')?.value ? 'Editar Evento' : 'Nuevo Evento' }}</h2>
   
-  <form (ngSubmit)="guardarEvento()" [formGroup]="eventoForm">
+  <form (ngSubmit)="guardarEvento()" [formGroup]="eventoForm" role="form" aria-labelledby="form-heading">
     <div class="form-group">
-      <label for="titulo">Título del Evento *</label>
+      <label for="titulo" tabindex="0">Título del Evento *</label>
       <input id="titulo" formControlName="titulo" type="text" 
-             placeholder="Ej: Seminario de Inteligencia Artificial" maxlength="100">
+             placeholder="Ej: Seminario de Inteligencia Artificial" maxlength="100"
+             tabindex="0"
+             aria-required="true"
+             aria-describedby="titulo-error titulo-help">
       @if (eventoForm.get('titulo')?.errors?.['required'] && eventoForm.get('titulo')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="titulo-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
       @if (eventoForm.get('titulo')?.errors?.['maxlength']) {
-        <small class="error-message">Máximo 100 caracteres</small>
+        <small class="error-message" id="titulo-length-error" role="alert" tabindex="0">Máximo 100 caracteres</small>
       }
     </div>
 
     <div class="form-group">
-      <label for="brevedescripcion">Breve Descripción *</label>
+      <label for="brevedescripcion" tabindex="0">Breve Descripción *</label>
       <textarea id="brevedescripcion" formControlName="brevedescripcion" rows="2"
-                placeholder="Descripción corta (aparecerá en la vista previa)" maxlength="200"></textarea>
-      <div class="char-counter">
+                placeholder="Descripción corta (aparecerá en la vista previa)" maxlength="200"
+                tabindex="0"
+                aria-required="true"
+                aria-describedby="brevedescripcion-error brevedescripcion-counter"></textarea>
+      <div class="char-counter" id="brevedescripcion-counter" tabindex="0">
         {{ eventoForm.get('brevedescripcion')?.value?.length || 0 }}/200
       </div>
       @if (eventoForm.get('brevedescripcion')?.errors?.['required'] && eventoForm.get('brevedescripcion')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="brevedescripcion-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-row">
       <div class="form-group">
-        <label for="fecha">Fecha *</label>
-        <input id="fecha" formControlName="fecha" type="date">
+        <label for="fecha" tabindex="0">Fecha *</label>
+        <input id="fecha" formControlName="fecha" type="date"
+               tabindex="0"
+               aria-required="true"
+               aria-describedby="fecha-error">
         @if (eventoForm.get('fecha')?.invalid && eventoForm.get('fecha')?.touched) {
-          <small class="error-message">Este campo es obligatorio</small>
+          <small class="error-message" id="fecha-error" role="alert" tabindex="0">Este campo es obligatorio</small>
         }
       </div>
 
       <div class="form-group">
-        <label for="hora">Hora *</label>
-        <input id="hora" formControlName="hora" type="time">
+        <label for="hora" tabindex="0">Hora *</label>
+        <input id="hora" formControlName="hora" type="time"
+               tabindex="0"
+               aria-required="true"
+               aria-describedby="hora-error">
         @if (eventoForm.get('hora')?.invalid && eventoForm.get('hora')?.touched) {
-          <small class="error-message">Este campo es obligatorio</small>
+          <small class="error-message" id="hora-error" role="alert" tabindex="0">Este campo es obligatorio</small>
         }
       </div>
     </div>
 
     <div class="form-group">
-      <label for="lugar">Lugar *</label>
+      <label for="lugar" tabindex="0">Lugar *</label>
       <input id="lugar" formControlName="lugar" type="text" 
-             placeholder="Ej: Auditorio Principal, Campus Central">
+             placeholder="Ej: Auditorio Principal, Campus Central"
+             tabindex="0"
+             aria-required="true"
+             aria-describedby="lugar-error">
       @if (eventoForm.get('lugar')?.invalid && eventoForm.get('lugar')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="lugar-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-group">
-      <label for="descripcion">Descripción Completa *</label>
+      <label for="descripcion" tabindex="0">Descripción Completa *</label>
       <textarea id="descripcion" formControlName="descripcion" rows="5"
-                placeholder="Describa el evento en detalle..."></textarea>
+                placeholder="Describa el evento en detalle..."
+                tabindex="0"
+                aria-required="true"
+                aria-describedby="descripcion-error"></textarea>
       @if (eventoForm.get('descripcion')?.invalid && eventoForm.get('descripcion')?.touched) {
-        <small class="error-message">Este campo es obligatorio</small>
+        <small class="error-message" id="descripcion-error" role="alert" tabindex="0">Este campo es obligatorio</small>
       }
     </div>
 
     <div class="form-actions">
-      <button type="submit" [disabled]="eventoForm.invalid" class="btn btn-primary">
+      <button type="submit" [disabled]="eventoForm.invalid" class="btn btn-primary"
+              tabindex="0"
+              attr.aria-label="{{ eventoForm.get('uuid')?.value ? 'Actualizar evento' : 'Publicar evento' }}">
         {{ eventoForm.get('uuid')?.value ? 'Actualizar Evento' : 'Publicar Evento' }}
       </button>
       <button routerLink="/eventos-feed" 
-       class="btn btn-secondary"
-        style="padding: 10px 20px">
-  Cancelar
-</button>
-      
+              class="btn btn-secondary"
+              style="padding: 10px 20px"
+              tabindex="0"
+             aria-label="Cancelar y volver al listado de eventos">
+        Cancelar
+      </button>
     </div>
   </form>
 </div>
